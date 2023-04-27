@@ -3,19 +3,23 @@
     <div class="container header__container">
       <div class="header__row">
         <div class="header__row_left">
-          <div class="header-left___logo">
-            <a href="#" class="header-left___logo_left">SMM</a>
-            <a href="#" class="header-left___logo_right">Planeta</a>
-          </div>
+          <router-link class="header-left___logo" to="/">
+            <span class="header-left___logo_left">SMM</span>
+            <span class="header-left___logo_right">Planeta</span></router-link
+          >
           <p class="header-left__desc">более 50000 блогеров</p>
         </div>
         <div class="header__row_right">
           <ul class="header-right__list_left">
             <li class="header-right__item">
-              <a href="#" class="header-right__link">Контакты</a>
+              <router-link class="header-right__link" to="/"
+                >Контакты</router-link
+              >
             </li>
             <li class="header-right__item">
-              <a href="#" class="header-right__link">Зарегистрироваться</a>
+              <router-link class="header-right__link" to="/about"
+                >Зарегистрироваться</router-link
+              >
             </li>
           </ul>
           <button class="header-right__button_left">
@@ -34,11 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.header__container {
-  max-width: 1180px;
-  padding: 0 20px;
-}
-
 .header__row {
   display: flex;
   justify-content: space-between;
@@ -61,7 +60,7 @@ export default {
   font-size: 1.6667rem;
   line-height: 1.9444rem;
   color: #af2500;
-  text-shadow: 4px 1px 6px rgba(13, 13, 13, 0.5);
+  text-shadow: 4px 1px 6px #d3792b;
 }
 
 .header-left___logo_right {
@@ -71,11 +70,10 @@ export default {
   text-shadow: 4px 1px 6px rgba(13, 13, 13, 0.5);
 }
 
-.header-left___logo_left:hover,
-.header-left___logo_left:active,
-.header-left___logo_right:hover,
-.header-left___logo_right:active {
+.header-left___logo:hover > .header-left___logo_right,
+.header-left___logo:active > .header-left___logo_right {
   text-shadow: 4px 1px 6px #d3792b;
+  transition: text-shadow 0.2s ease-in;
 }
 
 .header-left__desc {
@@ -114,6 +112,12 @@ export default {
   text-align: center;
   border-radius: 20px;
   background: rgba(255, 54, 0, 0.8);
+  transition: background 0.2s ease-in;
+}
+
+.header-right__button_left:hover,
+.header-right__button_left:active {
+  background: rgba(255, 54, 0, 0.91);
 }
 
 .header-right-button__text {
@@ -136,17 +140,13 @@ export default {
   }
 }
 
-@media (max-width: 440px) {
-  .header__container {
-    padding: 0;
-  }
-
+@media (max-width: 320px) {
   .header-left___logo {
     margin-right: 0;
   }
 
   .header-right__button_left {
-    padding: 5px 16px;
+    padding: 6px 17px;
   }
 
   .header-right-button__text {

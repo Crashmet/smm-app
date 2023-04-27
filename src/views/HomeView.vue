@@ -1,18 +1,20 @@
 <template>
   <div class="home">
     <Header />
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <Search />
+    <h1>This is a home page</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from '../components/Header.vue';
+import Search from '@/components/section/Search.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Header,
+    Search,
   },
 };
 </script>

@@ -83,18 +83,16 @@ article > * + * {
 }
 
 /* Наследуем шрифты для инпутов и кнопок */
-button{
-  border: none;
-}
 
 input,
 button,
 textarea,
 select {
   font: inherit;
+  border: none;
 }
 
-
+input,
 button,
 button:focus {
   cursor: pointer;
@@ -144,22 +142,32 @@ html {
 .container {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
-/* @media(max-width: 1200px){
-  
-} */
+@media(max-width: 960px){
+  *{
+    font-size: 16px;
+  }
+}
 
-@media(max-width: 440px){
+
+@media(max-width: 640px){
+  *{
+    font-size: 14px;
+  }
+}
+
+
+@media(max-width: 480px){
   *{
     font-size: 12px;
   }
+}
 
+@media(max-width: 320px){
   .container {
-    margin: 0 auto;
-    max-width: 300px;
-    padding: 0 10px;
+    padding: 0;
   }
 
 }
