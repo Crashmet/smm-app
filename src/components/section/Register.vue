@@ -1,35 +1,39 @@
 <template>
-  <section class="login">
-    <div class="login__container container">
-      <div class="login__body">
-        <h2 class="login__title">Вход</h2>
+  <section class="register">
+    <div class="register__container container">
+      <div class="register__body">
+        <h2 class="register__title">Регистрация</h2>
 
-        <form class="login__form">
-          <input
-            type="email"
-            class="login__input login__input_email"
-            aria-describedby="emailHelp"
-            placeholder="E-mail"
-            data-required="email"
-            data-invalid-message="Please provide valid email example@example.com"
-          />
+        <form class="register__form">
+          <div>
+            <input
+              type="email"
+              class="register__input register__input_email"
+              aria-describedby="emailHelp"
+              placeholder="E-mail"
+              data-required="email"
+              data-invalid-message="Please provide valid email example@example.com"
+            />
 
-          <input
-            type="password"
-            class="login__input login__input_pass"
-            placeholder="Пароль"
-            data-required="password"
-          />
+            <input
+              type="password"
+              class="register__input register__input_pass-1"
+              placeholder="Пароль 1"
+              data-required="password"
+            />
 
-          <button type="submit" class="login__submit-btn">
-            <span class="submit-btn__text">Войти</span>
+            <input
+              type="password"
+              class="register__input register__input_pass-2"
+              placeholder="Пароль 2"
+              data-required="password"
+            />
+          </div>
+
+          <button type="submit" class="register__submit-btn">
+            <span class="submit-btn__text">Зарегистрироваться </span>
           </button>
         </form>
-
-        <div class="login__aside">
-          <a href="#" class="login__forgot-pass">Забыли пароль?</a>
-          <a href="#" class="login__restore-pass">Восстановить</a>
-        </div>
       </div>
     </div>
   </section>
@@ -37,7 +41,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
 };
 </script>
 
@@ -49,12 +53,12 @@ export default {
 * Browsers: last 4 version
 */
 
-.login {
-  margin-top: 4.2778rem;
+.register {
+  margin-top: 4.2222rem;
   margin-bottom: 5.3333rem;
 }
 
-.login__container {
+.register__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,7 +67,7 @@ export default {
   justify-content: center;
 }
 
-.login__body {
+.register__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,8 +82,8 @@ export default {
   width: 100%;
 }
 
-.login__title {
-  margin-bottom: 2.1667rem;
+.register__title {
+  margin-bottom: 2.4445rem;
   font-weight: 700;
   font-size: 1.7778rem;
   line-height: 2.1111rem;
@@ -87,7 +91,7 @@ export default {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.login__form {
+.register__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,12 +102,11 @@ export default {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
-  margin-bottom: 1.6111rem;
   width: 100%;
 }
 
-.login__input {
-  margin-bottom: 1.7222rem;
+.register__input {
+  margin-bottom: 1.1111rem;
   padding: 6px 30px;
   width: 100%;
   height: 33px;
@@ -114,14 +117,18 @@ export default {
   border-radius: 20px;
 }
 
-.login__submit-btn {
-  padding: 7px 54px;
+.register__input:last-child {
+  margin-bottom: 1.6667rem;
+}
+
+.register__submit-btn {
+  padding: 7px 34px;
   background: rgba(255, 54, 0, 0.8);
   border-radius: 20px;
 }
 
-.login__submit-btn:hover,
-.login__submit-btn:active {
+.register__submit-btn:hover,
+.register__submit-btn:active {
   background: rgba(255, 54, 0, 0.91);
 }
 
@@ -131,7 +138,7 @@ export default {
   color: #ffffff;
 }
 
-.login__aside {
+.register__aside {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -144,41 +151,40 @@ export default {
   justify-content: space-between;
 }
 
-.login__restore-pass {
+.register__restore-pass {
   text-decoration: underline;
   -webkit-text-decoration-color: #0d0d0d;
   text-decoration-color: #0d0d0d;
 }
 
 @media (max-width: 440px) {
-  .login {
+  .register {
     margin-top: 55px;
     margin-bottom: 50px;
   }
 
-  .login__body {
+  .register__body {
     max-width: 221px;
   }
 
-  .login__title {
+  .register__title {
     font-size: 18px;
     line-height: 21px;
-    margin-bottom: 25px;
+    margin-bottom: 23 px;
   }
 
-  .login__form {
-    margin-bottom: 25px;
-  }
-
-  .login__input {
+  .register__input {
     margin-bottom: 8px;
-    padding: 6px 30px;
+    padding: 4px 30px 7px;
     height: 30px;
   }
 
-  .login__submit-btn {
-    margin-top: 4px;
-    padding: 9px 22px;
+  .register__input:last-child {
+    margin-bottom: 16px;
+  }
+
+  .register__submit-btn {
+    padding: 9px 15px;
   }
 
   .submit-btn__text {

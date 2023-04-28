@@ -18,7 +18,7 @@
               >
             </li>
             <li class="header-right__item">
-              <router-link class="header-right__link" to="/"
+              <router-link class="header-right__link" to="/register"
                 >Зарегистрироваться</router-link
               >
             </li>
