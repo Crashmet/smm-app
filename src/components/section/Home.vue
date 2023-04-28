@@ -42,6 +42,13 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .home {
   margin-top: 8.3333rem;
   margin-bottom: 30px;
@@ -61,11 +68,24 @@ export default {
   top: -152px;
   right: -195px;
   border-radius: 50%;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(5.73%, rgba(255, 118, 0, 0.83)),
+    color-stop(69.27%, rgba(255, 54, 0, 0.53))
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 118, 0, 0.83) 5.73%,
+    rgba(255, 54, 0, 0.53) 69.27%
+  );
   background: linear-gradient(
     180deg,
     rgba(255, 118, 0, 0.83) 5.73%,
     rgba(255, 54, 0, 0.53) 69.27%
   );
+  -webkit-filter: blur(50px);
   filter: blur(50px);
 }
 
@@ -78,6 +98,7 @@ export default {
   top: -67px;
   right: 18px;
   background: url('@/assets/image/hand-mobile.png') 0 0 / contain no-repeat;
+  -webkit-filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.25));
 }
 
@@ -155,7 +176,11 @@ export default {
 }
 
 .home-statistics__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
