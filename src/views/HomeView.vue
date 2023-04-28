@@ -3,6 +3,7 @@
     <Header />
     <Search />
     <Home />
+    <Statistics />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Header from '@/components/Header.vue';
 import Search from '@/components/section/Search.vue';
 import Home from '@/components/section/Home.vue';
+import Statistics from '@/components/section/Statistics.vue';
 
 export default {
   name: 'HomeView',
@@ -17,6 +19,7 @@ export default {
     Header,
     Search,
     Home,
+    Statistics,
   },
 };
 </script>

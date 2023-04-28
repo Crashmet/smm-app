@@ -90,6 +90,7 @@ textarea,
 select {
   font: inherit;
   border: none;
+  color: #0D0D0D;
 }
 
 input,
@@ -125,6 +126,7 @@ label {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #0D0D0D;
 }
 
 *,
@@ -133,6 +135,7 @@ label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  color: #0D0D0D;
 }
 
 html {

@@ -16,21 +16,6 @@
         <li class="home-check__item">Адаптация и подбор персонала</li>
         <li class="home-check__item">Управляй этим</li>
       </ul>
-
-      <ul class="home-statistics__list">
-        <li class="home-statistics__item">
-          <p class="statistics-item__top">Охват</p>
-          <p class="statistics-item__bottom">81 358 879</p>
-        </li>
-        <li class="home-statistics__item">
-          <p class="statistics-item__top">Блогеров</p>
-          <p class="statistics-item__bottom">542</p>
-        </li>
-        <li class="home-statistics__item">
-          <p class="statistics-item__top">Постов</p>
-          <p class="statistics-item__bottom">7 236</p>
-        </li>
-      </ul>
     </div>
   </section>
 </template>
@@ -175,30 +160,6 @@ export default {
   background: url('@/assets/image/checkmark.svg') 0 0 / contain no-repeat;
 }
 
-.home-statistics__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.home-statistics__item {
-  font-size: 1rem;
-  line-height: 1.1667rem;
-  color: #0d0d0d;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.home-statistics__item:not(:last-child) {
-  margin-right: 3.8889rem;
-}
-
-.statistics-item__top {
-  margin-bottom: 0.5rem;
-}
-
 @media (max-width: 960px) {
   .home__container::before {
     width: 600px;
@@ -267,10 +228,6 @@ export default {
   .home-check__item::before {
     width: 15px;
     height: 15px;
-  }
-
-  .home-statistics__item:not(:last-child) {
-    margin-right: 20px;
   }
 }
 

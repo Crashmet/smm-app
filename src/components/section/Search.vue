@@ -63,6 +63,8 @@ export default {
       isGenderActive: false,
       isRegionActive: false,
     };
+
+    // добавь сброс классов !!!!!*************
   },
 };
 </script>

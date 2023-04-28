@@ -18,14 +18,16 @@
               >
             </li>
             <li class="header-right__item">
-              <router-link class="header-right__link" to="/about"
+              <router-link class="header-right__link" to="/"
                 >Зарегистрироваться</router-link
               >
             </li>
           </ul>
 
           <button class="header-right__button_left">
-            <span class="header-right-button__text">Войти</span>
+            <router-link class="header-right-button__text" to="/login"
+              >Войти</router-link
+            >
           </button>
         </div>
       </div>
