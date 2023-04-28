@@ -2,19 +2,21 @@
   <div class="home">
     <Header />
     <Search />
-    <h1>This is a home page</h1>
+    <Home />
   </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue';
+import Header from '@/components/Header.vue';
 import Search from '@/components/section/Search.vue';
+import Home from '@/components/section/Home.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Header,
     Search,
+    Home,
   },
 };
 </script>

@@ -7,6 +7,7 @@
           <span class="search-line-btn__text">поиск</span>
         </button>
       </div>
+
       <nav class="search__nav">
         <ul class="search-nav__list">
           <li
@@ -67,8 +68,15 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .search {
-  margin-top: 3.1111rem;
+  margin-top: 3.2222rem;
 }
 
 .search__container {
@@ -76,19 +84,25 @@ export default {
 }
 
 .search__line {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 3.6667rem;
+  margin-bottom: 3.5556rem;
   border-radius: 20px;
   background: #ffffff;
+  -webkit-filter: drop-shadow(5px 5px 7px rgba(255, 54, 0, 0.43));
   filter: drop-shadow(5px 5px 7px rgba(255, 54, 0, 0.43));
+  -webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
   box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
 }
 
 .search-line__input {
   padding-left: 20px;
   width: 100%;
-  height: 2.7778rem;
+  height: 2.5556rem;
   border: none;
   border-radius: 20px;
   background: #ffffff;
@@ -97,9 +111,11 @@ export default {
 .search-line__btn {
   right: 0;
   bottom: 0;
-  padding: 0.6111rem 3rem 0.6667rem;
+  padding: 0.5556rem 4.3333rem 0.5556rem;
   background: rgba(255, 54, 0, 0.8);
   border-radius: 20px;
+  -webkit-transition: background 0.2s ease-in;
+  -o-transition: background 0.2s ease-in;
   transition: background 0.2s ease-in;
 }
 
@@ -111,30 +127,46 @@ export default {
 .search-line-btn__text {
   font-weight: 700;
   font-size: 1rem;
-  line-height: 1.1667rem;
   text-align: center;
   color: #ffffff;
 }
 
 .search-nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
 .search-nav__item {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   margin-bottom: 24px;
-  margin-right: 10px;
   height: 2.2222rem;
   background: #fefefe;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   cursor: pointer;
+}
+
+.search-nav__item:not(:last-child) {
+  margin-right: 10px;
 }
 
 .search-nav__item::after {
@@ -149,8 +181,14 @@ export default {
 
 .search-nav__item_active::after {
   top: 0.5556rem;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
+  -webkit-transition: -webkit-transform 0.3s easy;
+  transition: -webkit-transform 0.3s easy;
+  -o-transition: transform 0.3s easy;
   transition: transform 0.3s easy;
+  transition: transform 0.3s easy, -webkit-transform 0.3s easy;
 }
 
 .search-nav__item_1 {
@@ -208,7 +246,6 @@ export default {
 
   .search-line-btn__text {
     font-size: 14px;
-    line-height: 16px;
   }
 }
 </style>
