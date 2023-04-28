@@ -173,6 +173,10 @@ export default {
     -ms-flex-align: start;
     align-items: start;
   }
+
+  .header-left__desc {
+    padding-top: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -187,7 +191,7 @@ export default {
   }
 
   .header-right__button_left {
-    padding: 6px 17px;
+    padding: 3.5px 17px 3px;
   }
 
   .header-right-button__text {

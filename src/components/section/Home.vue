@@ -44,6 +44,7 @@ export default {
 <style scoped>
 .home {
   margin-top: 8.3333rem;
+  margin-bottom: 30px;
 }
 
 .home__container {
@@ -55,10 +56,10 @@ export default {
   content: '';
   position: absolute;
   z-index: -10;
-  width: 43.5556rem;
-  height: 42.5rem;
-  right: -10.8333rem;
-  bottom: -90px;
+  width: 785px;
+  height: 765px;
+  top: -152px;
+  right: -195px;
   border-radius: 50%;
   background: linear-gradient(
     180deg,
@@ -72,10 +73,10 @@ export default {
   content: '';
   position: absolute;
   z-index: -9;
-  width: 28.6111rem;
-  height: 32.5rem;
-  right: 1.2778rem;
-  bottom: 0;
+  width: 522px;
+  height: 612px;
+  top: -67px;
+  right: 18px;
   background: url('@/assets/image/hand-mobile.png') 0 0 / contain no-repeat;
   filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.25));
 }
@@ -132,8 +133,8 @@ export default {
 
 .home-check__item {
   position: relative;
-  padding-left: 58px;
-  height: 1.6667rem;
+  padding-left: 3.2422222rem;
+  min-height: 1.6667rem;
   font-size: 1rem;
   line-height: 1.6667rem;
   color: #0d0d0d;
@@ -171,5 +172,121 @@ export default {
 
 .statistics-item__top {
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 960px) {
+  .home__container::before {
+    width: 600px;
+    height: 600px;
+    top: -125px;
+    right: -155px;
+  }
+
+  .home__container::after {
+    width: 400px;
+    height: 500px;
+    top: -17px;
+    right: 0;
+  }
+}
+
+@media (max-width: 780px) {
+  .home {
+    margin-top: 53px;
+  }
+  .home__container::before {
+    width: 500px;
+    height: 500px;
+    top: -05px;
+    right: -120px;
+  }
+
+  .home__container::after {
+    width: 300px;
+    height: 400px;
+    top: 50px;
+    right: -30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home__container::before {
+    width: 450px;
+    height: 450px;
+    top: -05px;
+    right: -120px;
+  }
+
+  .home__container::after {
+    width: 250px;
+    height: 350px;
+    top: 50px;
+    right: -30px;
+  }
+
+  .home-check__list {
+    margin-bottom: 87px;
+    max-width: 165px;
+  }
+
+  .home-check__item {
+    padding-left: 24px;
+    min-height: 15px;
+    line-height: 15px;
+  }
+
+  .home-check__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .home-check__item::before {
+    width: 15px;
+    height: 15px;
+  }
+
+  .home-statistics__item:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .home__container::before {
+    width: 217px;
+    height: 305px;
+    right: -55px;
+    top: -15px;
+  }
+
+  .home__container::after {
+    width: 205px;
+    height: 230px;
+    right: -52px;
+    top: 3px;
+  }
+
+  .home__logo {
+    margin-bottom: 22px;
+  }
+
+  .home-logo__title_left {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .home-logo__title_right {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .home-logo__desc {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .home__container {
+    padding: 0;
+  }
 }
 </style>

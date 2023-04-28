@@ -193,24 +193,24 @@ export default {
 
 .search-nav__item_1 {
   max-width: 176px;
-  min-width: 140px;
+  min-width: 135px;
 }
 
 .search-nav__item_2 {
   max-width: 289px;
-  min-width: 140px;
+  min-width: 135px;
 }
 .search-nav__item_3 {
   max-width: 138px;
-  min-width: 102px;
+  min-width: 99px;
 }
 .search-nav__item_4 {
   max-width: 211px;
-  min-width: 70px;
+  min-width: 65px;
 }
 .search-nav__item_5 {
   max-width: 186px;
-  min-width: 102px;
+  min-width: 99px;
 }
 
 .search-nav__text {
@@ -225,27 +225,43 @@ export default {
   .search__container {
     padding: 0 20px;
   }
-}
 
-@media (max-width: 320px) {
-  .search__container {
-    padding: 0;
+  .search__line {
+    margin-bottom: 16px;
+  }
+
+  .search-nav__item {
+    margin-bottom: 16px;
+  }
+
+  .search-nav__text {
+    padding-left: 14px;
+  }
+
+  .search-line__input {
+    height: 28px;
+  }
+
+  .search-line__btn {
+    padding: 4px 18px;
+  }
+
+  .search-line-btn__text {
+    font-size: 14px;
   }
 
   .search-nav__list {
     margin-left: 10px;
   }
 
-  .search-line__input {
-    height: 30px;
+  .search-nav__item {
+    margin-right: 15px;
   }
+}
 
-  .search-line__btn {
-    padding: 7px 18px;
-  }
-
-  .search-line-btn__text {
-    font-size: 14px;
+@media (max-width: 320px) {
+  .search__container {
+    padding: 0;
   }
 }
 </style>

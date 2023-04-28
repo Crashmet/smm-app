@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home-page">
     <Header />
     <Search />
     <Home />
@@ -20,3 +20,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.home-page {
+  overflow-x: hidden;
+}
+</style>
