@@ -1,9 +1,11 @@
 <template>
-  <div class="about">
+  <div class="login-view">
     <Header />
-    <Search />
-    <Login />
-    <Statistics />
+    <main>
+      <Search />
+      <Login />
+      <Statistics />
+    </main>
   </div>
 </template>
 

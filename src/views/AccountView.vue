@@ -1,33 +1,27 @@
 <template>
-  <div class="home-page">
+  <div class="account-view">
     <Header />
     <main>
       <Search />
-      <Home />
+      <Account />
       <Statistics />
     </main>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
+import Header from '../components/Header.vue';
 import Search from '@/components/section/Search.vue';
-import Home from '@/components/section/Home.vue';
+import Account from '@/components/section/Account.vue';
 import Statistics from '@/components/section/Statistics.vue';
 
 export default {
-  name: 'HomeView',
+  name: 'AccountView',
   components: {
     Header,
     Search,
-    Home,
+    Account,
     Statistics,
   },
 };
 </script>
-
-<style scoped>
-.home-page {
-  overflow: hidden;
-}
-</style>

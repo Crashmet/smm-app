@@ -13,7 +13,7 @@
         <div class="header__row_right">
           <ul class="header-right__list_left">
             <li class="header-right__item">
-              <router-link class="header-right__link" to="/"
+              <router-link class="header-right__link" to="/account"
                 >Контакты</router-link
               >
             </li>

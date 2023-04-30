@@ -1,9 +1,11 @@
 <template>
-  <div class="about">
+  <div class="register-view">
     <Header />
-    <Search />
-    <Register />
-    <Statistics />
+    <main>
+      <Search />
+      <Register />
+      <Statistics />
+    </main>
   </div>
 </template>
 
