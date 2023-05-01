@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .statistics {
-  margin-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .statistics__container {

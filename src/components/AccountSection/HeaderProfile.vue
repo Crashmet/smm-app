@@ -1,6 +1,6 @@
 <template>
   <table class="header-profile">
-    <thead>
+    <thead class="header-profile__head">
       <tr class="header-profile__title-row">
         <th
           class="header-profile__title-cell"
@@ -99,19 +99,40 @@ export default {
 
 <style scoped>
 table {
-  width: 50%;
-  margin-bottom: 8px;
-  table-layout: fixed;
+  width: 100%;
   cursor: pointer;
 }
 
-thead th {
+thead {
+  width: 100%;
+}
+
+th {
   text-align: left;
+}
+
+th:first-child {
+  width: 16%;
+}
+
+th:nth-child(2) {
+  width: 19%;
 }
 
 thead,
 tbody {
-  margin-bottom: 8px;
+  margin-bottom: 0.4444rem;
+}
+
+th:hover > .header-profile__title-text,
+th:active > .header-profile__title-text,
+td:hover > .header-profile__body-text,
+td:active > .header-profile__body-text {
+  font-size: 1.1111rem;
+  line-height: 1.2778rem;
+  color: #ff3600;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
 .header-profile__title-text_active {
@@ -126,5 +147,6 @@ tbody {
   line-height: 1.2778rem;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 </style>
