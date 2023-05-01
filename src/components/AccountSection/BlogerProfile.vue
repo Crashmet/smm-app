@@ -8,15 +8,9 @@
           <span class="body__label">E-mail</span>
         </li>
 
-        <li class="body__cell body__cell-input">
+        <li class="body__cell">
           <input type="email" class="body__input" />
         </li>
-
-        <li class="body__cell body__cell-input_price"></li>
-
-        <li class="body__cell body__cell-btn"></li>
-
-        <li class="body__cell body__cell-link"></li>
       </ul>
 
       <ul class="body__row">
@@ -24,7 +18,7 @@
           <span class="body__label">Имя</span>
         </li>
 
-        <li class="body__cell body__cell-input">
+        <li class="body__cell">
           <input type="text" class="body__input" />
         </li>
       </ul>
@@ -34,7 +28,7 @@
           <span class="body__label">Фамилия</span>
         </li>
 
-        <li class="body__cell body__cell-input">
+        <li class="body__cell">
           <input type="text" class="body__input" />
         </li>
       </ul>
@@ -44,26 +38,30 @@
           <span class="body__label">Instagram</span>
         </li>
 
-        <li class="body__cell body__cell-input">
-          <input type="text" class="body__input" placeholder="nickname" />
-        </li>
+        <li class="body__cell">
+          <ul class="body__cell-list">
+            <li class="body__cell-item">
+              <input type="text" class="body__input" placeholder="nickname" />
+            </li>
 
-        <li class="body__cell body__cell-input_price">
-          <input
-            type="text"
-            placeholder="цена за пост"
-            class="body__input_price"
-          />
-        </li>
+            <li class="body__cell-item">
+              <input
+                type="text"
+                placeholder="цена за пост"
+                class="body__input_price"
+              />
+            </li>
 
-        <li class="body__cell body__cell-btn">
-          <button class="body__btn">
-            Разрешить доступ к статистике аккаунта
-          </button>
-        </li>
+            <li class="body__cell-item">
+              <button class="body__btn">
+                Разрешить доступ к статистике аккаунта
+              </button>
+            </li>
 
-        <li class="body__cell body__cell-link">
-          <a href="#" class="body__link"> Описать порядок работы api </a>
+            <li class="body__cell-item">
+              <a href="#" class="body__link"> Описать порядок работы api </a>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -72,26 +70,30 @@
           <span class="body__label">Tiktok</span>
         </li>
 
-        <li class="body__cell body__cell-input">
-          <input type="text" class="body__input" placeholder="nickname" />
-        </li>
+        <li class="body__cell">
+          <ul class="body__cell-list">
+            <li class="body__cell-item">
+              <input type="text" class="body__input" placeholder="nickname" />
+            </li>
 
-        <li class="body__cell body__cell-input_price">
-          <input
-            type="text"
-            placeholder="цена за пост"
-            class="body__input_price"
-          />
-        </li>
+            <li class="body__cell-item">
+              <input
+                type="text"
+                placeholder="цена за пост"
+                class="body__input_price"
+              />
+            </li>
 
-        <li class="body__cell body__cell-btn">
-          <button class="body__btn">
-            Разрешить доступ к статистике аккаунта
-          </button>
-        </li>
+            <li class="body__cell-item">
+              <button class="body__btn">
+                Разрешить доступ к статистике аккаунта
+              </button>
+            </li>
 
-        <li class="body__cell body__cell-link">
-          <a href="#" class="body__link"> Описать порядок работы api </a>
+            <li class="body__cell-item">
+              <a href="#" class="body__link"> Описать порядок работы api </a>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -100,7 +102,7 @@
           <span class="body__label">Сменить пароль</span>
         </li>
 
-        <li class="body__cell body__cell-input">
+        <li class="body__cell">
           <input type="password" class="body__input" />
         </li>
       </ul>
@@ -116,7 +118,7 @@ export default {
 
 <style scoped>
 .bloger-profile__link {
-  margin-bottom: 35px;
+  margin-bottom: 2rem;
   text-decoration-line: underline;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -124,20 +126,26 @@ export default {
 
 .body__row {
   display: flex;
-  padding-bottom: 0.8889rem;
+  margin-bottom: 0.9444rem;
 }
 
 .body__cell {
-  max-height: 31px;
-  height: 29px;
+  height: 1.6667rem;
 }
 
 .body__cell-label {
   width: 16%;
 }
 
-.body__cell-input {
-  width: 19%;
+.body__cell-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.body__cell-item {
+}
+
+.body__label {
 }
 
 .body__cell-input_price {
@@ -145,7 +153,7 @@ export default {
 }
 
 .body__cell-btn {
-  width: 25%;
+  width: 30%;
 }
 
 .body__cell-link {
@@ -177,6 +185,7 @@ export default {
 }
 
 .body__btn {
+  width: 95%;
   height: 100%;
   font-size: 14px;
   line-height: 16px;
