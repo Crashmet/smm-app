@@ -23,8 +23,9 @@ const routes = [
     component: () => import('../views/AccountView.vue'),
     children: [
       {
-        path: 'user&profile',
-        component: () => import('../components/AccountSection/UserProfile.vue'),
+        path: 'bloger&profile',
+        component: () =>
+          import('../components/AccountSection/BlogerProfile.vue'),
       },
     ],
   },
