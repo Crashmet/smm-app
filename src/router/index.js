@@ -35,7 +35,7 @@ const routes = [
       {
         path: 'bloger&orders',
         component: () =>
-          import('../components/AccountSection/BlogerOreders.vue'),
+          import('../components/AccountSection/BlogerOrders.vue'),
       },
 
       {
@@ -51,13 +51,20 @@ const routes = [
       {
         path: 'advertiser&orders',
         component: () =>
-          import('../components/AccountSection/AdvertiserOreders.vue'),
+          import('../components/AccountSection/AdvertiserOrders.vue'),
         children: [
           {
             path: 'home',
             component: () =>
               import(
-                '../components/AccountSection/AdvertiserOredersPages/AdvertiserOredersHome.vue'
+                '../components/AdvertiserOrdersPages/AdvertiserOrdersHome.vue'
+              ),
+          },
+          {
+            path: 'new-order',
+            component: () =>
+              import(
+                '../components/AdvertiserOrdersPages/AdvertiserOrdersNewOrder.vue'
               ),
           },
         ],

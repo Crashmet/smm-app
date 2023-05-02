@@ -128,7 +128,7 @@
 
 <script>
 export default {
-  name: 'AdvertiserOreders',
+  name: 'AdvertiserOrders',
 };
 </script>
 

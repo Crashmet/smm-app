@@ -1,7 +1,8 @@
 <template>
   <div class="advertiser-oreders-home home">
-    <p class="home__link">Разместить новый заказ</p>
-
+    <router-link class="home__link" to="new-order"
+      >Изменить профиль</router-link
+    >
     <table>
       <thead>
         <tr>
@@ -115,6 +116,7 @@ export default {
   font-size: 1rem;
   line-height: 1.1667rem;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 
 table {
