@@ -7,7 +7,17 @@
     <div class="new-order__body body">
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">Рекламодатель</span>
+          <span class="body__label">№ заказа</span>
+        </li>
+
+        <li class="body__cell">
+          <input type="number" class="body__input" disabled value="1" />
+        </li>
+      </ul>
+
+      <ul class="body__row">
+        <li class="body__cell body__cell-label">
+          <span class="body__label">Компания</span>
         </li>
 
         <li class="body__cell">
@@ -17,7 +27,7 @@
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">ИНН</span>
+          <span class="body__label">Регион</span>
         </li>
 
         <li class="body__cell">
@@ -27,7 +37,7 @@
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">Адрес</span>
+          <span class="body__label">Срок исполнения</span>
         </li>
 
         <li class="body__cell">
@@ -36,52 +46,75 @@
       </ul>
 
       <ul class="body__row">
-        <li class="body__cell body__cell-label">
-          <span class="body__label">Телефон</span>
+        <li class="body__cell body__cell-label body__cell-label_top">
+          <span class="body__label">Задание</span>
         </li>
 
         <li class="body__cell">
-          <input type="text" class="body__input" />
+          <textarea
+            name="massage"
+            class="body__input body__input_textarea"
+          ></textarea>
         </li>
       </ul>
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">E-mail</span>
+          <span class="body__label">Фото</span>
         </li>
 
         <li class="body__cell">
-          <input type="text" class="body__input" />
+          <input type="file" class="body__input" />
         </li>
       </ul>
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">Website</span>
+          <span class="body__label">Видео</span>
         </li>
 
         <li class="body__cell">
-          <input type="text" class="body__input" />
+          <input type="file" class="body__input" />
         </li>
       </ul>
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">Сменить пароль</span>
+          <span class="body__label">Соцсети</span>
         </li>
 
         <li class="body__cell">
-          <input type="text" class="body__input" />
+          <input type="text" class="body__input" value="выбрать" disabled />
         </li>
       </ul>
 
       <ul class="body__row">
         <li class="body__cell body__cell-label">
-          <span class="body__label">Рекламодатель</span>
+          <span class="body__label">Сумма, руб.</span>
         </li>
 
         <li class="body__cell">
-          <input type="text" class="body__input" />
+          <input type="text" class="body__input" value="20 000" disabled />
+        </li>
+      </ul>
+
+      <ul class="body__row">
+        <li class="body__cell body__cell-label">
+          <span class="body__label">Кол-во блогеров</span>
+        </li>
+
+        <li class="body__cell">
+          <input type="text" class="body__input" value="10" disabled />
+        </li>
+      </ul>
+
+      <ul class="body__row">
+        <li class="body__cell body__cell-label">
+          <span class="body__label">Охват</span>
+        </li>
+
+        <li class="body__cell">
+          <input type="text" class="body__input" value="500" disabled />
         </li>
       </ul>
     </div>

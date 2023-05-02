@@ -36,7 +36,7 @@ export default {
 }
 
 .account__main {
-  overflow-x: scroll;
+  overflow-x: auto;
   max-width: 1102px;
   width: 100%;
   padding: 2.2222rem 2.1111rem;
