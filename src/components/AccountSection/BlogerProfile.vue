@@ -129,15 +129,27 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .bloger-profile__link {
   margin-bottom: 1.6667rem;
+  -webkit-text-decoration-line: underline;
   text-decoration-line: underline;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .body__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -161,18 +173,27 @@ export default {
   border: 1px solid rgba(240, 158, 86, 0.58);
   border-radius: 10px;
   background-color: transparent;
+  -webkit-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
   transition: border 0.3s ease;
 }
 
 .body__input:hover,
 .body__input:active {
   border: 1.5px solid rgba(240, 158, 86, 0.94);
+  -webkit-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
   transition: border 0.3s ease;
 }
 
 .body__cell-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -191,12 +212,16 @@ export default {
   border-radius: 10px;
   background-color: transparent;
   text-align: center;
+  -webkit-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
   transition: border 0.3s ease;
 }
 
 .cell-item__input_price:hover,
 .cell-item__input_price:active {
   border: 1.5px solid rgba(240, 158, 86, 0.94);
+  -webkit-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
   transition: border 0.3s ease;
 }
 
@@ -220,11 +245,14 @@ export default {
 .cell-item__link {
   font-size: 0.8889rem;
   line-height: 1.0556rem;
+  -webkit-text-decoration-line: underline;
   text-decoration-line: underline;
 }
 
 @media (max-width: 1175px) {
   .body__row_long {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: start;
   }
   .body__row:not(:last-child) {

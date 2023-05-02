@@ -33,6 +33,12 @@ const routes = [
           import('../components/AccountSection/BlogerFinance.vue'),
       },
       {
+        path: 'bloger&orders',
+        component: () =>
+          import('../components/AccountSection/BlogerOreders.vue'),
+      },
+
+      {
         path: 'advertiser&profile',
         component: () =>
           import('../components/AccountSection/AdvertiserProfile.vue'),

@@ -19,6 +19,13 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .account {
   margin-top: 4.1111rem;
   margin-bottom: 5.5556rem;
@@ -29,10 +36,12 @@ export default {
 }
 
 .account__main {
+  overflow-x: scroll;
   max-width: 1102px;
   width: 100%;
-  padding: 2.2222rem 0 2.2222rem 2.1111rem;
+  padding: 2.2222rem 2.1111rem;
   background: rgba(255, 119, 0, 0.15);
+  -webkit-box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }

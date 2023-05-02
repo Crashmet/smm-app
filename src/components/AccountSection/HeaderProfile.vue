@@ -95,12 +95,21 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .header-profile__cell:hover > .header-profile__text,
 .header-profile__cell:active > .header-profile__text {
   font-size: 1.1111rem;
   line-height: 1.2778rem;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -109,6 +118,8 @@ export default {
 }
 
 .header-profile__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 0.2778rem;
 }
@@ -135,6 +146,8 @@ export default {
   line-height: 1.2778rem;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
