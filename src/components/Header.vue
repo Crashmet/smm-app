@@ -13,7 +13,7 @@
         <div class="header__row_right">
           <ul class="header-right__list_left">
             <li class="header-right__item">
-              <router-link class="header-right__link" to="/account"
+              <router-link class="header-right__link" :to="lastPageAccount"
                 >Контакты</router-link
               >
             </li>
@@ -37,8 +37,19 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'Header',
+
+  computed: {
+    ...mapGetters('headerProfileStore', ['users']),
+
+    lastPageAccount() {
+      const pageActive = this.users.find((el) => el.isActive === true);
+
+      return pageActive.routerName;
+    },
+  },
 };
 </script>
 
