@@ -33,7 +33,7 @@
         </li>
       </ul>
 
-      <ul class="body__row">
+      <ul class="body__row body__row_long">
         <li class="body__cell body__cell-label">
           <span class="body__label">Instagram</span>
         </li>
@@ -41,31 +41,37 @@
         <li class="body__cell">
           <ul class="body__cell-list">
             <li class="body__cell-item">
-              <input type="text" class="body__input" placeholder="nickname" />
+              <input
+                type="text"
+                class="body__input cell-item__input"
+                placeholder="nickname"
+              />
             </li>
 
             <li class="body__cell-item">
               <input
                 type="text"
                 placeholder="цена за пост"
-                class="body__input_price"
+                class="cell-item__input_price"
               />
             </li>
 
             <li class="body__cell-item">
-              <button class="body__btn">
-                Разрешить доступ к статистике аккаунта
+              <button class="cell-item__btn">
+                Разрешить доступ к статистике
               </button>
             </li>
 
-            <li class="body__cell-item">
-              <a href="#" class="body__link"> Описать порядок работы api </a>
+            <li class="body__cell-item body__cell-item__link">
+              <a href="#" class="cell-item__link">
+                Описать порядок работы api
+              </a>
             </li>
           </ul>
         </li>
       </ul>
 
-      <ul class="body__row">
+      <ul class="body__row body__row_long">
         <li class="body__cell body__cell-label">
           <span class="body__label">Tiktok</span>
         </li>
@@ -73,25 +79,31 @@
         <li class="body__cell">
           <ul class="body__cell-list">
             <li class="body__cell-item">
-              <input type="text" class="body__input" placeholder="nickname" />
+              <input
+                type="text"
+                class="body__input cell-item__input"
+                placeholder="nickname"
+              />
             </li>
 
             <li class="body__cell-item">
               <input
                 type="text"
                 placeholder="цена за пост"
-                class="body__input_price"
+                class="cell-item__input_price"
               />
             </li>
 
             <li class="body__cell-item">
-              <button class="body__btn">
-                Разрешить доступ к статистике аккаунта
+              <button class="cell-item__btn">
+                Разрешить доступ к статистике
               </button>
             </li>
 
-            <li class="body__cell-item">
-              <a href="#" class="body__link"> Описать порядок работы api </a>
+            <li class="body__cell-item body__cell-item__link">
+              <a href="#" class="cell-item__link">
+                Описать порядок работы api
+              </a>
             </li>
           </ul>
         </li>
@@ -118,7 +130,7 @@ export default {
 
 <style scoped>
 .bloger-profile__link {
-  margin-bottom: 2rem;
+  margin-bottom: 1.6667rem;
   text-decoration-line: underline;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -126,44 +138,23 @@ export default {
 
 .body__row {
   display: flex;
-  margin-bottom: 0.9444rem;
+  align-items: center;
 }
 
-.body__cell {
-  height: 1.6667rem;
+.body__row:not(:last-child) {
+  margin-bottom: 0.8889rem;
 }
 
 .body__cell-label {
-  width: 16%;
-}
-
-.body__cell-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.body__cell-item {
-}
-
-.body__label {
-}
-
-.body__cell-input_price {
-  width: 13.2%;
-}
-
-.body__cell-btn {
-  width: 30%;
-}
-
-.body__cell-link {
-  width: 21%;
+  max-width: 9.2222rem;
+  width: 100%;
 }
 
 .body__input {
-  padding-left: 11px;
-  width: 93%;
-  height: 100%;
+  padding-left: 0.6111rem;
+  max-width: 9.8333rem;
+  width: 100%;
+  min-height: 1.6667rem;
   font-size: 0.8889rem;
   line-height: 1.0556rem;
   color: rgba(13, 13, 13, 0.61);
@@ -172,9 +163,20 @@ export default {
   background-color: transparent;
 }
 
-.body__input_price {
-  width: 90%;
-  height: 100%;
+.body__cell-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.body__cell-item:not(:last-child) {
+  margin-right: 0.9rem;
+}
+
+.cell-item__input_price {
+  max-width: 6.9444rem;
+  width: 100%;
+  min-height: 1.6667rem;
   font-size: 0.8889rem;
   line-height: 1.0556rem;
   color: rgba(13, 13, 13, 0.61);
@@ -184,19 +186,70 @@ export default {
   text-align: center;
 }
 
-.body__btn {
-  width: 95%;
-  height: 100%;
-  font-size: 14px;
-  line-height: 16px;
+.cell-item__btn {
+  padding: 6px 8px;
+  max-width: 350px;
+  width: 100%;
+  min-height: 1.6667rem;
+  font-size: 0.7778rem;
+  line-height: 0.8889rem;
   background: #f09e56;
   border: 1px solid rgba(240, 158, 86, 0.58);
   border-radius: 10px;
 }
 
-.body__link {
+.body__cell-item__link {
+  text-align: center;
+  max-width: 216px;
+}
+
+.cell-item__link {
   font-size: 0.8889rem;
   line-height: 1.0556rem;
   text-decoration-line: underline;
+}
+
+@media (max-width: 1175px) {
+  .body__row_long {
+    align-items: start;
+  }
+  .body__row {
+    margin-bottom: 15px;
+  }
+
+  .body__cell-item {
+    margin-bottom: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bloger-profile__link {
+    margin-bottom: 9px;
+  }
+
+  .body__row:not(:last-child) {
+    margin-bottom: 13px;
+  }
+
+  .body__cell-item:not(:last-child) {
+    margin-right: 6px;
+  }
+
+  .body__input,
+  .cell-item__input_price {
+    max-width: 88px;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .cell-item__btn {
+    max-width: 104px;
+    width: 100%;
+  }
+
+  .body__cell-item__link {
+    max-width: 87px;
+    width: 100%;
+  }
 }
 </style>

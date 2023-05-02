@@ -92,7 +92,7 @@ export default {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 3.5556rem;
+  margin-bottom: 3.6667rem;
   border-radius: 20px;
   background: #ffffff;
   -webkit-filter: drop-shadow(5px 5px 7px rgba(255, 54, 0, 0.43));
@@ -102,7 +102,7 @@ export default {
 }
 
 .search-line__input {
-  padding-left: 20px;
+  padding-left: 19.9998px;
   width: 100%;
   height: 2.5556rem;
   border: none;
@@ -129,6 +129,7 @@ export default {
 .search-line-btn__text {
   font-weight: 700;
   font-size: 1rem;
+  line-height: 1.1667rem;
   text-align: center;
   color: #ffffff;
 }
@@ -245,11 +246,12 @@ export default {
   }
 
   .search-line__btn {
-    padding: 4px 18px;
+    padding: 2px 18px;
   }
 
   .search-line-btn__text {
     font-size: 14px;
+    line-height: 16px;
   }
 
   .search-nav__list {

@@ -1,7 +1,7 @@
 <template>
-  <section class="profile">
-    <div class="profile__container container">
-      <div class="profile__main">
+  <section class="account">
+    <div class="account__container container">
+      <div class="account__main">
         <header-profile />
         <router-view />
       </div>
@@ -13,29 +13,45 @@
 import HeaderProfile from '../AccountSection/HeaderProfile.vue';
 
 export default {
-  name: 'Profile',
+  name: 'Account',
   components: { HeaderProfile },
 };
 </script>
 
 <style scoped>
-.profile {
-  margin-top: 74px;
-  margin-bottom: 100px;
+.account {
+  margin-top: 4.1111rem;
+  margin-bottom: 5.5556rem;
 }
 
-.profile__container {
-  padding: 0 49px;
+.account__container {
+  padding: 0 48.9996px;
 }
 
-.profile__main {
+.account__main {
   max-width: 1102px;
   width: 100%;
-  max-height: 460px;
-  /* height: 100%; */
-  padding: 40px 38px;
+  padding: 2.2222rem 0 2.2222rem 2.1111rem;
   background: rgba(255, 119, 0, 0.15);
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
+}
+
+@media (max-width: 480px) {
+  /* .account {
+    margin-top: 48px;
+    margin-bottom: 5.5556rem;
+  } */
+
+  .account__main {
+    padding: 27px 0px 15px 10px;
+  }
+
+  .account__container {
+    padding: 0;
+  }
+}
+
+@media (max-width: 320px) {
 }
 </style>

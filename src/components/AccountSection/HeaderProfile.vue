@@ -1,53 +1,50 @@
 <template>
-  <table class="header-profile">
-    <thead class="header-profile__head">
-      <tr class="header-profile__title-row">
-        <th
-          class="header-profile__title-cell"
-          v-for="user in users"
-          :key="user"
-          @click="handlerClickUser(user.name, user.routerName)"
+  <div class="header-profile">
+    <ul class="header-profile__row">
+      <li
+        class="header-profile__cell"
+        v-for="user in users"
+        :key="user"
+        @click="handlerClickUser(user.name, user.routerName)"
+      >
+        <span
+          class="header-profile__text"
+          :class="user.isActive ? 'header-profile__text_active' : ''"
+          >{{ user.name }}</span
         >
-          <span
-            class="header-profile__title-text"
-            :class="user.isActive ? 'header-profile__title-text_active' : ''"
-            >{{ user.name }}</span
-          >
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="header-profile__body-row" v-if="users[0].isActive">
-        <td
-          class="header-profile__body-cell"
-          v-for="setting in blogerMenu"
-          :key="setting"
-          @click="handlerClickBlogerMenu(setting.name, setting.routerName)"
-        >
-          <span
-            class="header-profile__body-text"
-            :class="setting.isActive ? 'header-profile__body-text_active' : ''"
-            >{{ setting.name }}</span
-          >
-        </td>
-      </tr>
+      </li>
+    </ul>
 
-      <tr v-else>
-        <td
-          class="header-profile__body-cell"
-          v-for="setting in advertiserMenu"
-          :key="setting"
-          @click="handlerClickAdvertiserMenu(setting.name, setting.routerName)"
+    <ul class="header-profile__row" v-if="users[0].isActive">
+      <li
+        class="header-profile__cell"
+        v-for="setting in blogerMenu"
+        :key="setting"
+        @click="handlerClickBlogerMenu(setting.name, setting.routerName)"
+      >
+        <span
+          class="header-profile__text"
+          :class="setting.isActive ? 'header-profile__text_active' : ''"
+          >{{ setting.name }}</span
         >
-          <span
-            class="header-profile__body-text"
-            :class="setting.isActive ? 'header-profile__body-text_active' : ''"
-            >{{ setting.name }}</span
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      </li>
+    </ul>
+
+    <ul class="header-profile__row" v-else>
+      <li
+        class="header-profile__cell"
+        v-for="setting in advertiserMenu"
+        :key="setting"
+        @click="handlerClickAdvertiserMenu(setting.name, setting.routerName)"
+      >
+        <span
+          class="header-profile__text"
+          :class="setting.isActive ? 'header-profile__text_active' : ''"
+          >{{ setting.name }}</span
+        >
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -98,36 +95,42 @@ export default {
 </script>
 
 <style scoped>
-table {
-  width: 100%;
+.header-profile__cell:hover > .header-profile__text,
+.header-profile__cell:active > .header-profile__text {
+  font-size: 1.1111rem;
+  line-height: 1.2778rem;
+  color: #ff3600;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.header-profile {
   cursor: pointer;
 }
 
-thead {
+.header-profile__row {
+  display: flex;
+  margin-bottom: 0.2778rem;
+}
+
+.header-profile__cell:first-child {
+  max-width: 9.2222rem;
   width: 100%;
 }
 
-th {
-  text-align: left;
+.header-profile__cell:nth-child(2) {
+  max-width: 10.7222rem;
+  width: 100%;
 }
 
-th:first-child {
-  width: 16%;
+.header-profile__text_active {
+  font-size: 1.1111rem;
+  line-height: 1.2778rem;
+  color: #ff3600;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-th:nth-child(2) {
-  width: 19%;
-}
-
-thead,
-tbody {
-  margin-bottom: 0.4444rem;
-}
-
-th:hover > .header-profile__title-text,
-th:active > .header-profile__title-text,
-td:hover > .header-profile__body-text,
-td:active > .header-profile__body-text {
+.header-profile__text_active {
   font-size: 1.1111rem;
   line-height: 1.2778rem;
   color: #ff3600;
@@ -135,18 +138,10 @@ td:active > .header-profile__body-text {
   transition: all 0.3s ease;
 }
 
-.header-profile__title-text_active {
-  font-size: 1.1111rem;
-  line-height: 1.2778rem;
-  color: #ff3600;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.header-profile__body-text_active {
-  font-size: 1.1111rem;
-  line-height: 1.2778rem;
-  color: #ff3600;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+@media (max-width: 480px) {
+  .header-profile__cell:nth-child(2) {
+    max-width: 108px;
+    width: 100%;
+  }
 }
 </style>

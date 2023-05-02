@@ -145,6 +145,11 @@ export default {
   color: #0d0d0d;
 }
 
+.header-right__link:hover,
+.header-right__link:active {
+  color: #ff3600;
+}
+
 .header-right__button_left {
   padding: 0.5rem 1.8889rem;
   text-align: center;
