@@ -38,10 +38,9 @@ export default {
 }
 
 @media (max-width: 480px) {
-  /* .account {
-    margin-top: 48px;
-    margin-bottom: 5.5556rem;
-  } */
+  .account {
+    margin-bottom: 60px;
+  }
 
   .account__main {
     padding: 27px 0px 15px 10px;

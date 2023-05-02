@@ -161,6 +161,13 @@ export default {
   border: 1px solid rgba(240, 158, 86, 0.58);
   border-radius: 10px;
   background-color: transparent;
+  transition: border 0.3s ease;
+}
+
+.body__input:hover,
+.body__input:active {
+  border: 1.5px solid rgba(240, 158, 86, 0.94);
+  transition: border 0.3s ease;
 }
 
 .body__cell-list {
@@ -184,6 +191,13 @@ export default {
   border-radius: 10px;
   background-color: transparent;
   text-align: center;
+  transition: border 0.3s ease;
+}
+
+.cell-item__input_price:hover,
+.cell-item__input_price:active {
+  border: 1.5px solid rgba(240, 158, 86, 0.94);
+  transition: border 0.3s ease;
 }
 
 .cell-item__btn {
@@ -213,7 +227,7 @@ export default {
   .body__row_long {
     align-items: start;
   }
-  .body__row {
+  .body__row:not(:last-child) {
     margin-bottom: 15px;
   }
 
@@ -243,6 +257,8 @@ export default {
   }
 
   .cell-item__btn {
+    border-radius: 5px;
+    padding: 4px 4px;
     max-width: 104px;
     width: 100%;
   }

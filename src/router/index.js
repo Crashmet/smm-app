@@ -27,6 +27,16 @@ const routes = [
         component: () =>
           import('../components/AccountSection/BlogerProfile.vue'),
       },
+      {
+        path: 'bloger&finance',
+        component: () =>
+          import('../components/AccountSection/BlogerFinance.vue'),
+      },
+      {
+        path: 'advertiser&profile',
+        component: () =>
+          import('../components/AccountSection/AdvertiserProfile.vue'),
+      },
     ],
   },
 ];
