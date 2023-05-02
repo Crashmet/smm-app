@@ -47,7 +47,7 @@ const headerProfileStore = {
       {
         name: 'Заказы',
         isActive: false,
-        routerName: '/account/advertiser&orders',
+        routerName: '/account/advertiser&orders/home',
       },
     ],
   },

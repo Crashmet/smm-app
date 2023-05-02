@@ -43,6 +43,25 @@ const routes = [
         component: () =>
           import('../components/AccountSection/AdvertiserProfile.vue'),
       },
+      {
+        path: 'advertiser&finance',
+        component: () =>
+          import('../components/AccountSection/AdvertiserFinance.vue'),
+      },
+      {
+        path: 'advertiser&orders',
+        component: () =>
+          import('../components/AccountSection/AdvertiserOreders.vue'),
+        children: [
+          {
+            path: 'home',
+            component: () =>
+              import(
+                '../components/AccountSection/AdvertiserOredersPages/AdvertiserOredersHome.vue'
+              ),
+          },
+        ],
+      },
     ],
   },
 ];
