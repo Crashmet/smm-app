@@ -101,7 +101,7 @@
 
 <script>
 export default {
-  name: 'BlogerOredersHome',
+  name: 'AdvertiserOrdersHome',
 };
 </script>
 

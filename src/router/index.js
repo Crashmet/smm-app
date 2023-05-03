@@ -67,6 +67,13 @@ const routes = [
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersNewOrder.vue'
               ),
           },
+          {
+            path: 'select',
+            component: () =>
+              import(
+                '../components/AdvertiserOrdersPages/AdvertiserOrdersSelect.vue'
+              ),
+          },
         ],
       },
     ],

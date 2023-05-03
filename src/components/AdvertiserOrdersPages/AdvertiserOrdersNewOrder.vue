@@ -134,7 +134,9 @@
         </li>
 
         <li class="body__cell body-footer__link">
-          <p class="footer__link">Разместить заказ</p>
+          <router-link to="select">
+            <p class="footer__link">Разместить заказ</p>
+          </router-link>
         </li>
       </ul>
     </div>

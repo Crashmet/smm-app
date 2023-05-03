@@ -139,13 +139,6 @@ export default {
   line-height: 1.2778rem;
   color: #ff3600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.header-profile__text_active {
-  font-size: 1.1111rem;
-  line-height: 1.2778rem;
-  color: #ff3600;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
