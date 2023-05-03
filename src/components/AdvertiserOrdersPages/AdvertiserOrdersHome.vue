@@ -1,8 +1,9 @@
 <template>
   <div class="advertiser-oreders-home home">
-    <router-link class="home__link" to="new-order"
-      >Изменить профиль</router-link
-    >
+    <router-link class="home__link" to="new-order">
+      Разместить новый заказ
+    </router-link>
+
     <table>
       <thead>
         <tr>
@@ -112,16 +113,17 @@ export default {
 * Browsers: last 4 version
 */
 .home__link {
+  display: block;
   max-width: 7.7778rem;
   font-size: 1rem;
   line-height: 1.1667rem;
   text-decoration-line: underline;
-  cursor: pointer;
+  margin-bottom: 1.6667rem;
 }
 
 table {
   table-layout: fixed;
-  margin-top: 1.6667rem;
+
   width: 788px;
   border: 1px solid rgba(13, 13, 13, 0.59);
   border-collapse: collapse;
