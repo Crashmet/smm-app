@@ -1,12 +1,10 @@
 <template>
   <div class="select">
-    <!-- <router-link class="select__link" to="new-order">
-      Разместить новый заказ
-    </router-link> -->
-
     <ul class="select-menu__row">
       <li class="select-menu__cell">
-        <span class="select-menu__text">Компания №1</span>
+        <router-link to="inspection">
+          <span class="select-menu__text">Компания №1</span>
+        </router-link>
       </li>
       <li class="select-menu__cell">
         <span class="select-menu__text">Название компании</span>
@@ -251,6 +249,7 @@ export default {
   display: flex;
   margin-top: 1.8889rem;
   margin-bottom: 1.1111rem;
+  cursor: pointer;
 }
 
 .select-menu__cell:first-child {
@@ -298,7 +297,7 @@ thead tr th {
 
 thead th {
   font-weight: 500;
-  font-size: 0.8889rem;
+  font-size: 0.875rem;
   line-height: 1.0556rem;
 }
 

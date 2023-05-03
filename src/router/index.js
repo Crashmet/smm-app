@@ -74,6 +74,13 @@ const routes = [
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersSelect.vue'
               ),
           },
+          {
+            path: 'inspection',
+            component: () =>
+              import(
+                '../components/AdvertiserOrdersPages/AdvertiserOrdersInspection.vue'
+              ),
+          },
         ],
       },
     ],
