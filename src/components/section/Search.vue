@@ -1,11 +1,18 @@
 <template>
   <section class="search">
     <div class="search__container container">
-      <div class="search__line">
-        <input class="search-line__input" type="text" />
-        <button class="search-line__btn">
-          <span class="search-line-btn__text">поиск</span>
-        </button>
+      <div class="search__bar">
+        <div class="search-bar__line">
+          <input class="search-line__input" type="text" v-model="searchInput" />
+          <button class="search-line__btn">
+            <router-link class="search-line-btn__text" to="/search-result"
+              >поиск</router-link
+            >
+          </button>
+        </div>
+        <template v-if="searchInput.length > 0">
+          <p class="search-bar__desc">Выдача по слову «{{ searchInput }}»</p>
+        </template>
       </div>
 
       <nav class="search__nav">
@@ -57,6 +64,8 @@ export default {
   name: 'Search',
   data() {
     return {
+      searchInput: '',
+
       isCategoryActive: false,
       isBrandActive: false,
       isAgeActive: false,
@@ -64,7 +73,7 @@ export default {
       isRegionActive: false,
     };
 
-    // добавь сброс классов !!!!!*************
+    // добавь сброс шевронов !!!!!*************
   },
 };
 </script>
@@ -85,20 +94,30 @@ export default {
   padding: 0 4.4444rem;
 }
 
-.search__line {
+.search__bar {
+  margin-bottom: 3.6667rem;
+}
+
+.search-bar__line {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 3.6667rem;
+
   border-radius: 20px;
   background: #ffffff;
   -webkit-filter: drop-shadow(5px 5px 7px rgba(255, 54, 0, 0.43));
   filter: drop-shadow(5px 5px 7px rgba(255, 54, 0, 0.43));
   -webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
   box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
+}
+
+.search-bar__desc {
+  margin-top: 1.1111rem;
+  margin-left: 1.4444rem;
+  color: rgba(13, 13, 13, 0.61);
 }
 
 .search-line__input {
@@ -108,6 +127,8 @@ export default {
   border: none;
   border-radius: 20px;
   background: #ffffff;
+  font-size: 1rem;
+  line-height: 1.1667rem;
 }
 
 .search-line__btn {
@@ -229,8 +250,13 @@ export default {
     padding: 0 20px;
   }
 
-  .search__line {
+  .search__bar {
     margin-bottom: 16px;
+  }
+
+  .search-bar__desc {
+    margin-top: 5px;
+    margin-left: 20px;
   }
 
   .search-nav__item {

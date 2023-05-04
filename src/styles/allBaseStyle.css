@@ -26,13 +26,6 @@ img {
   max-width: 100%;
 }
 
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
 
 /* Убираем внутренние отступы */
 ul[class],
