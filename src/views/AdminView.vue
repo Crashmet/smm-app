@@ -1,9 +1,9 @@
 <template>
-  <div class="search-result-view">
+  <div class="admin-view">
     <Header />
     <main>
       <Search />
-      <search-result />
+      <Admin />
       <Statistics />
     </main>
   </div>
@@ -12,15 +12,15 @@
 <script>
 import Header from '../components/Header.vue';
 import Search from '@/components/section/Search.vue';
-import SearchResult from '@/components/section/SearchResult.vue';
+import Admin from '@/components/section/Admin.vue';
 import Statistics from '@/components/section/Statistics.vue';
 
 export default {
-  name: 'SearchResultView',
+  name: 'AdminView',
   components: {
     Header,
     Search,
-    SearchResult,
+    Admin,
     Statistics,
   },
 };

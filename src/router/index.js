@@ -8,6 +8,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/AdminView.vue'),
+  },
+  {
     path: '/search-result',
     name: 'search-result',
     component: () => import('../views/SearchResultView.vue'),
