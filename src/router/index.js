@@ -81,6 +81,13 @@ const routes = [
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersInspection.vue'
               ),
           },
+          {
+            path: 'chat',
+            component: () =>
+              import(
+                '../components/AdvertiserOrdersPages/AdvertiserOrdersChat.vue'
+              ),
+          },
         ],
       },
     ],

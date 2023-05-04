@@ -51,10 +51,8 @@
         </li>
 
         <li class="body__cell body__cell-input">
-          <textarea
-            name="massage"
-            class="body__input body__input_textarea"
-          ></textarea>
+          <textarea name="massage" class="body__input body__input_textarea">
+          </textarea>
         </li>
       </ul>
 
@@ -62,7 +60,6 @@
         <li class="body__cell body__cell-label">
           <span class="body__label">Фото</span>
         </li>
-
         <li class="body__cell body__cell-input">
           <label class="body__input body__input-label" for="file-input-1"
             >загрузить</label

@@ -1,9 +1,5 @@
 <template>
   <div class="inspection">
-    <!-- <router-link class="inspection__link" to="new-order">
-      Разместить новый заказ
-    </router-link> -->
-
     <ul class="inspection-menu__row">
       <li class="inspection-menu__cell">
         <span class="inspection-menu__text inspection-menu__text_active"
@@ -48,7 +44,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -63,7 +61,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -78,7 +78,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -93,7 +95,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -108,7 +112,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -123,7 +129,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -138,7 +146,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -153,7 +163,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
 
         <tr>
@@ -168,7 +180,9 @@
           <td>1</td>
           <td>link 1</td>
           <td>кнопка</td>
-          <td><button class="table__chat-btn">чат</button></td>
+          <td>
+            <router-link class="table__chat-btn" to="chat"> чат </router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -188,7 +202,7 @@
 
 <script>
 export default {
-  name: 'AdvertiserOrdersInspection',
+  name: 'AdvertiserOrdersChat',
 };
 </script>
 
