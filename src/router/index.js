@@ -102,6 +102,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFoundViev.vue'),
+  },
 ];
 
 const router = createRouter({
