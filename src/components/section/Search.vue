@@ -200,7 +200,10 @@ export default {
   right: 0.6111rem;
   width: 1.0556rem;
   height: 1.0556rem;
-  background: url('@/assets/image/arrow.svg') 0 0 / contain no-repeat;
+  background-image: url('../../assets/image/arrow.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .search-nav__item_active::after {

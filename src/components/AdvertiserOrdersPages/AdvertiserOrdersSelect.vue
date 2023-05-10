@@ -376,7 +376,10 @@ td {
 }
 
 .left-body__cell_active::after {
-  background: url('@/assets/image/check.svg') 0 0 / contain no-repeat;
+  background-image: url('../../assets/image/check.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .table-right {

@@ -103,7 +103,7 @@ export default {
 
 /* CSS Error Page Responsive */
 
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .not-found span {
     font-size: 200%;
   }

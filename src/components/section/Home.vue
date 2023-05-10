@@ -82,7 +82,10 @@ export default {
   height: 612px;
   top: -67px;
   right: 18px;
-  background: url('@/assets/image/hand-mobile.png') 0 0 / contain no-repeat;
+  background-image: url('../../assets/image/hand-mobile.png');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
   -webkit-filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.25));
 }
@@ -157,7 +160,7 @@ export default {
   top: 0;
   width: 1.6667rem;
   height: 1.6667rem;
-  background: url('@/assets/image/checkmark.svg') 0 0 / contain no-repeat;
+  background: url('../../assets/image/checkmark.svg') 0 0 / contain no-repeat;
 }
 
 @media (max-width: 960px) {

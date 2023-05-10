@@ -7,5 +7,3 @@
 <style src="./styles/fonts/fonts.css" />
 <style src="./styles/normalize.css" />
 <style src="./styles/allBaseStyle.css" />
-
-<style></style>
