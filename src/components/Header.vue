@@ -171,7 +171,7 @@ export default {
 }
 
 .header-right__button_left {
-  padding: 0.5rem 1.8889rem;
+  padding: 0.5rem 1.8889rem 0.5556rem;
   text-align: center;
   border-radius: 20px;
   background: rgba(255, 54, 0, 0.8);
@@ -191,6 +191,7 @@ export default {
 .header-right-button__text {
   font-weight: 700;
   font-size: 1rem;
+  /* line-height: 1rem; */
   color: #ffffff;
 }
 
@@ -216,17 +217,19 @@ export default {
   }
 }
 
-@media (max-width: 320px) {
-  .header-left__logo {
-    margin-right: 0;
-  }
-
+@media (max-width: 480px) {
   .header-right__button_left {
-    padding: 3.5px 17px 3px;
+    padding: 3px 17px 3.5px;
   }
 
   .header-right-button__text {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-left__logo {
+    margin-right: 0;
   }
 }
 </style>

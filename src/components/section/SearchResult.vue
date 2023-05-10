@@ -278,7 +278,25 @@ export default {
 
 @media (max-width: 390px) {
   .search-result__container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .search-result__container {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 330px) {
+  .search-result__container {
     padding: 0;
+  }
+}
+
+@media (max-width: 307px) {
+  .search-result__container {
+    padding: 0 40px;
   }
 }
 </style>

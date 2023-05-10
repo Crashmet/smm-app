@@ -4,11 +4,9 @@
       <div class="search__bar">
         <div class="search-bar__line">
           <input class="search-line__input" type="text" v-model="searchInput" />
-          <button class="search-line__btn">
-            <router-link class="search-line-btn__text" to="/search-result"
-              >поиск</router-link
-            >
-          </button>
+          <router-link class="search-line__btn" to="/search-result">
+            <span class="search-line-btn__text">поиск</span>
+          </router-link>
         </div>
         <template v-if="searchInput.length > 0">
           <p class="search-bar__desc">Выдача по слову «{{ searchInput }}»</p>
@@ -275,7 +273,7 @@ export default {
   }
 
   .search-line__btn {
-    padding: 2px 18px;
+    padding: 6.5px 18px 5.5px;
   }
 
   .search-line-btn__text {
