@@ -105,6 +105,9 @@ export default {
   line-height: 1.9444rem;
   color: #af2500;
   text-shadow: 4px 1px 6px rgba(13, 13, 13, 0.5);
+  -webkit-transition: text-shadow 0.3s ease-in;
+  -o-transition: text-shadow 0.3s ease-in;
+  transition: text-shadow 0.3s ease-in;
 }
 
 .header-left__logo:hover > .header-left-logo__title_right,
@@ -154,11 +157,17 @@ export default {
 .header-right__link {
   font-size: 1rem;
   color: #0d0d0d;
+  -webkit-transition: color 0.2s ease-in;
+  -o-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 .header-right__link:hover,
 .header-right__link:active {
   color: #ff3600;
+  -webkit-transition: color 0.2s ease-in;
+  -o-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 .header-right__button_left {
@@ -174,6 +183,9 @@ export default {
 .header-right__button_left:hover,
 .header-right__button_left:active {
   background: rgba(255, 54, 0, 0.91);
+  -webkit-transition: background 0.2s ease-in;
+  -o-transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
 }
 
 .header-right-button__text {

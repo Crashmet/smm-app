@@ -77,7 +77,7 @@ export default {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin: 0 0 40px 0;
 }
 

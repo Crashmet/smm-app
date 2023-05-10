@@ -118,6 +118,9 @@ export default {
   line-height: 2.6111rem;
   color: #af2500;
   text-shadow: 4px 1px 6px rgba(13, 13, 13, 0.5);
+  -webkit-transition: text-shadow 0.4s ease-in;
+  -o-transition: text-shadow 0.4s ease-in;
+  transition: text-shadow 0.4s ease-in;
 }
 
 .home-logo__title:hover > .home-logo__title_right,
