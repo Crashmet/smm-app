@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksmm_app"]=self["webpackChunksmm_app"]||[]).push([[184],{6184:function(r,e,n){n.r(e),n.d(e,{default:function(){return p}});var u=n(6252);function t(r,e,n,t,s,a){const c=(0,u.up)("router-view");return(0,u.wg)(),(0,u.j4)(c)}var s={name:"BlogerOrders"},a=n(3744);const c=(0,a.Z)(s,[["render",t]]);var p=c}}]);
+//# sourceMappingURL=184.9c2b7218.js.map
