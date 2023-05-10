@@ -53,7 +53,9 @@ export default {
 }
 
 .error-text p {
-  margin: 3.8889rem 0 0 0;
+  margin: 4.1667rem 0 0 0;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .error-text i {
@@ -66,7 +68,7 @@ export default {
 
 .error-text span {
   position: relative;
-  background: #4c4c4c;
+  background: #4c4c4ce7;
   color: #fff;
   font-size: 300%;
   padding: 0 20px;
@@ -96,20 +98,9 @@ export default {
   position: absolute;
   pointer-events: none;
   border-color: rgba(136, 183, 213, 0);
-  border-top-color: #4c4c4c;
+  border-top-color: #4c4c4ce7;
   border-width: 7px;
   margin-left: -7px;
-}
-
-/* CSS Error Page Responsive */
-
-@media (max-width: 640px) {
-  .not-found span {
-    font-size: 200%;
-  }
-  .error-text a:hover {
-    color: #fff;
-  }
 }
 
 .back:active {
@@ -131,7 +122,7 @@ export default {
   color: #fff;
   padding: 10px 20px;
   font-size: 0.8889rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
   border-radius: 5px;
@@ -141,5 +132,16 @@ export default {
   -webkit-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+}
+
+/* CSS Error Page Responsive */
+
+@media (max-width: 640px) {
+  .not-found span {
+    font-size: 200%;
+  }
+  .error-text a:hover {
+    color: #fff;
+  }
 }
 </style>
