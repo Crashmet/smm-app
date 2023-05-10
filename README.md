@@ -1,4 +1,11 @@
-# smm-app
+# SMM - app
+```
+```
+# Ссылка на приложение - [Landing](https://crashmet.github.io/smm-app/dist)
+
+```
+```
+
 
 ## Project setup
 ```
