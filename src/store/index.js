@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import headerProfileStore from './modules/headerProfileStore';
+import registerStore from './modules/registerStore';
 
 export default createStore({
   state: {},
@@ -8,5 +9,6 @@ export default createStore({
   actions: {},
   modules: {
     headerProfileStore,
+    registerStore,
   },
 });

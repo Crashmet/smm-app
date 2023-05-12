@@ -5,32 +5,87 @@
         <h2 class="register__title">Регистрация</h2>
 
         <form class="register__form">
-          <div>
-            <input
-              type="email"
-              class="register__input register__input_email"
-              aria-describedby="emailHelp"
-              placeholder="E-mail"
-              data-required="email"
-              data-invalid-message="Please provide valid email example@example.com"
-            />
+          <div class="register-form__list">
+            <div class="register-form__item">
+              <input
+                v-model="username"
+                type="text"
+                class="register__input"
+                placeholder="Username"
+              />
 
-            <input
-              type="password"
-              class="register__input register__input_pass-1"
-              placeholder="Пароль 1"
-              data-required="password"
-            />
+              <template v-if="validatorUsername.length">
+                <p class="register__validation">{{ validatorUsername }}</p>
+              </template>
+            </div>
 
-            <input
-              type="password"
-              class="register__input register__input_pass-2"
-              placeholder="Пароль 2"
-              data-required="password"
-            />
+            <div class="register-form__item">
+              <input
+                v-model="first_name"
+                type="text"
+                class="register__input"
+                placeholder="Имя"
+              />
+            </div>
+
+            <div class="register-form__item">
+              <input
+                v-model="last_name"
+                type="text"
+                class="register__input"
+                placeholder="Фамилия"
+              />
+            </div>
+
+            <div class="register-form__item">
+              <input
+                v-model="email"
+                type="email"
+                class="register__input register__input_email"
+                placeholder="E-mail"
+              />
+
+              <template v-if="validatorEmail.length">
+                <p class="register__validation">{{ validatorEmail }}</p>
+              </template>
+            </div>
+
+            <div class="register-form__item">
+              <input
+                v-model="password"
+                type="password"
+                class="register__input register__input_pass-1"
+                placeholder="Пароль 1"
+              />
+
+              <template v-if="validatorPassword.length">
+                <p class="register__validation">{{ validatorPassword }}</p>
+              </template>
+            </div>
+
+            <div class="register-form__item">
+              <input
+                v-model="password2"
+                type="password"
+                class="register__input register__input_pass-2"
+                placeholder="Пароль 2"
+              />
+
+              <template
+                v-if="validatorPassword2.length || nonFieldErrors.length"
+              >
+                <p class="register__validation">
+                  {{ validatorPassword2 }} {{ nonFieldErrors }}
+                </p>
+              </template>
+            </div>
           </div>
 
-          <button type="submit" class="register__submit-btn">
+          <button
+            @click="handlerSubmit"
+            type="submit"
+            class="register__submit-btn"
+          >
             <span class="submit-btn__text">Зарегистрироваться </span>
           </button>
         </form>
@@ -40,8 +95,83 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'Register',
+
+  data() {
+    return {
+      username: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      password2: '',
+
+      validatorUsername: '',
+      validatorPassword: '',
+      validatorPassword2: '',
+      validatorEmail: '',
+      nonFieldErrors: '',
+    };
+  },
+
+  computed: {
+    ...mapGetters('registerStore', ['validatorResponse']),
+  },
+
+  methods: {
+    ...mapActions('registerStore', ['registration']),
+
+    handlerSubmit() {
+      const registerData = {
+        email: this.email,
+        first_name: this.first_name,
+        last_name: this.last_name,
+        password: this.password,
+        password2: this.password2,
+        username: this.username,
+      };
+
+      this.registration(registerData);
+    },
+
+    resetValidatorMassages() {
+      this.validatorUsername = '';
+      this.validatorPassword = '';
+      this.validatorPassword2 = '';
+      this.validatorEmail = '';
+      this.nonFieldErrors = '';
+    },
+
+    addValidatorMassages() {
+      for (let el of Object.entries(this.validatorResponse)) {
+        const massage = el[1].reduce((acc, el) => acc + '/br' + el);
+
+        if (el[0] === 'email') {
+          this.validatorEmail = massage;
+        } else if (el[0] === 'password') {
+          this.validatorPassword = massage;
+        } else if (el[0] === 'password2') {
+          this.validatorPassword2 = massage;
+        } else if (el[0] === 'username') {
+          this.validatorUsername = massage;
+        } else if (el[0] === 'non_field_errors') {
+          this.nonFieldErrors = massage;
+        }
+      }
+    },
+  },
+
+  watch: {
+    validatorResponse() {
+      console.log(this.validatorResponse);
+
+      this.resetValidatorMassages();
+
+      this.addValidatorMassages();
+    },
+  },
 };
 </script>
 
@@ -105,8 +235,20 @@ export default {
   width: 100%;
 }
 
-.register__input {
+.register-form__list {
+  width: 100%;
+}
+
+.register-form__item {
   margin-bottom: 1.1111rem;
+  width: 100%;
+}
+
+.register-form__item:last-child {
+  margin-bottom: 1.6667rem;
+}
+
+.register__input {
   padding: 6px 30px;
   width: 100%;
   height: 33px;
@@ -117,8 +259,10 @@ export default {
   border-radius: 20px;
 }
 
-.register__input:last-child {
-  margin-bottom: 1.6667rem;
+.register__validation {
+  margin-left: 20px;
+  margin-top: 7px;
+  color: rgba(255, 54, 0, 1);
 }
 
 .register__submit-btn {
@@ -173,14 +317,17 @@ export default {
     margin-bottom: 23 px;
   }
 
-  .register__input {
+  .register-form__item {
     margin-bottom: 8px;
-    padding: 4px 30px 7px;
-    height: 30px;
   }
 
-  .register__input:last-child {
+  .register-form__item:last-child {
     margin-bottom: 16px;
+  }
+
+  .register__input {
+    height: 30px;
+    padding: 4px 30px 7px;
   }
 
   .register__submit-btn {
