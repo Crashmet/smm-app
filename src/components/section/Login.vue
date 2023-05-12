@@ -5,23 +5,39 @@
         <h2 class="login__title">Вход</h2>
 
         <form class="login__form">
-          <input
-            type="email"
-            class="login__input login__input_email"
-            aria-describedby="emailHelp"
-            placeholder="E-mail"
-            data-required="email"
-            data-invalid-message="Please provide valid email example@example.com"
-          />
+          <div class="login-form__item">
+            <input
+              v-model="username"
+              type="text"
+              class="login__input"
+              placeholder="Username"
+            />
 
-          <input
-            type="password"
-            class="login__input login__input_pass"
-            placeholder="Пароль"
-            data-required="password"
-          />
+            <template v-if="validatorUsername.length">
+              <p class="login__validation">{{ validatorUsername }}</p>
+            </template>
+          </div>
 
-          <button type="submit" class="login__submit-btn">
+          <div class="login-form__item">
+            <input
+              v-model="password"
+              type="password"
+              class="login__input login__input_pass-1"
+              placeholder="Пароль 1"
+            />
+
+            <template v-if="validatorPassword.length || nonFieldErrors.length">
+              <p class="login__validation">
+                {{ validatorPassword }} {{ nonFieldErrors }}
+              </p>
+            </template>
+          </div>
+
+          <button
+            @click="handlerSubmit"
+            type="submit"
+            class="login__submit-btn"
+          >
             <span class="submit-btn__text">Войти</span>
           </button>
         </form>
@@ -36,8 +52,67 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Login',
+
+  data() {
+    return {
+      username: '',
+      password: '',
+
+      validatorUsername: '',
+      validatorPassword: '',
+      nonFieldErrors: '',
+    };
+  },
+
+  computed: {
+    ...mapGetters('loginStore', ['validatorResponse']),
+  },
+
+  methods: {
+    ...mapActions('loginStore', ['login']),
+
+    handlerSubmit() {
+      const loginData = {
+        username: this.username,
+        password: this.password,
+      };
+
+      this.login(loginData);
+    },
+
+    resetValidatorMassages() {
+      this.validatorUsername = '';
+      this.validatorPassword = '';
+      this.nonFieldErrors = '';
+    },
+
+    addValidatorMassages() {
+      for (let el of Object.entries(this.validatorResponse)) {
+        const massage = el[1].reduce((acc, el) => acc + ' ' + el);
+
+        if (el[0] === 'username') {
+          this.validatorUsername = massage;
+        } else if (el[0] === 'password') {
+          this.validatorPassword = massage;
+        } else if (el[0] === 'non_field_errors') {
+          this.nonFieldErrors = massage;
+        }
+      }
+    },
+  },
+
+  watch: {
+    validatorResponse() {
+      console.log(this.validatorResponse);
+
+      this.resetValidatorMassages();
+      this.addValidatorMassages();
+    },
+  },
 };
 </script>
 
@@ -102,8 +177,12 @@ export default {
   width: 100%;
 }
 
-.login__input {
+.login-form__item {
   margin-bottom: 1.7222rem;
+  width: 100%;
+}
+
+.login__input {
   padding: 6px 30px;
   width: 100%;
   height: 33px;
@@ -112,6 +191,12 @@ export default {
   -webkit-box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+}
+
+.login__validation {
+  margin-left: 1.1111rem;
+  margin-top: 0.3889rem;
+  color: rgba(255, 54, 0, 1);
 }
 
 .login__submit-btn {
@@ -170,8 +255,11 @@ export default {
     margin-bottom: 25px;
   }
 
-  .login__input {
+  .login-form__item {
     margin-bottom: 8px;
+  }
+
+  .login__input {
     padding: 6px 30px;
     height: 30px;
   }

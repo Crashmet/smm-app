@@ -96,6 +96,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Register',
 
@@ -146,7 +147,7 @@ export default {
 
     addValidatorMassages() {
       for (let el of Object.entries(this.validatorResponse)) {
-        const massage = el[1].reduce((acc, el) => acc + '/br' + el);
+        const massage = el[1].reduce((acc, el) => acc + ' ' + el);
 
         if (el[0] === 'email') {
           this.validatorEmail = massage;
@@ -165,10 +166,7 @@ export default {
 
   watch: {
     validatorResponse() {
-      console.log(this.validatorResponse);
-
       this.resetValidatorMassages();
-
       this.addValidatorMassages();
     },
   },
@@ -260,8 +258,8 @@ export default {
 }
 
 .register__validation {
-  margin-left: 20px;
-  margin-top: 7px;
+  margin-left: 1.1111rem;
+  margin-top: 0.3889rem;
   color: rgba(255, 54, 0, 1);
 }
 

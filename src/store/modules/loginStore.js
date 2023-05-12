@@ -1,16 +1,12 @@
 import axios from '@/plugins/axios/index';
 
-const registerStore = {
+const loginStore = {
   namespaced: true,
 
   state: {
-    registerData: {
-      email: '',
-      first_name: '',
-      last_name: '',
-      password: '',
-      password2: '',
+    loginData: {
       username: '',
+      password: '',
     },
 
     validatorResponse: {},
@@ -27,17 +23,20 @@ const registerStore = {
   },
 
   actions: {
-    async registration({ commit }, registerData) {
-      const dataJson = JSON.stringify(registerData);
+    async login({ commit }, loginData) {
+      const dataJson = JSON.stringify(loginData);
+
+      console.log(dataJson);
 
       await axios
-        .post(`register/`, dataJson, {
+        .post(`login/`, dataJson, {
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
           },
         })
         .then(function (response) {
+          console.log(response);
           commit('SET_VALIDATOR_DATA', {});
         })
         .catch(function (error) {
@@ -47,4 +46,4 @@ const registerStore = {
   },
 };
 
-export default registerStore;
+export default loginStore;
