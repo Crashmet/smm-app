@@ -135,6 +135,13 @@ export default {
       };
 
       this.registration(registerData);
+
+      this.resetFormPassword();
+    },
+
+    resetFormPassword() {
+      this.password = '';
+      this.password2 = '';
     },
 
     resetValidatorMassages() {

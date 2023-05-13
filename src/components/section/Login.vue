@@ -82,6 +82,12 @@ export default {
       };
 
       this.login(loginData);
+
+      this.resetFormPassword();
+    },
+
+    resetFormPassword() {
+      this.password = '';
     },
 
     resetValidatorMassages() {
@@ -178,7 +184,7 @@ export default {
 }
 
 .login-form__item {
-  margin-bottom: 1.7222rem;
+  margin-bottom: 1.3rem;
   width: 100%;
 }
 
