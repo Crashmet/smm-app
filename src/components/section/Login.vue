@@ -59,8 +59,8 @@ export default {
 
   data() {
     return {
-      username: '',
-      password: '',
+      username: 'Cat12',
+      password: 'shamil123',
 
       validatorUsername: '',
       validatorPassword: '',
@@ -84,6 +84,8 @@ export default {
       this.onLogin(loginData);
 
       this.resetFormPassword();
+
+      // location.reload();
     },
 
     resetFormPassword() {
@@ -115,13 +117,6 @@ export default {
     validatorResponse() {
       this.resetValidatorMassages();
       this.addValidatorMassages();
-    },
-
-    entryStatus() {
-      console.log(this.entryStatus);
-      if (this.entryStatus === 200) {
-        this.$router.push({ path: '/' });
-      }
     },
   },
 };

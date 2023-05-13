@@ -10,7 +10,7 @@
           <p class="header-left__desc">более 50000 блогеров</p>
         </div>
 
-        <div v-if="entryStatus !== 200">
+        <div v-if="entryStatus !== '200'">
           <div class="header__row_right">
             <ul class="header-right__list_left">
               <li class="header-right__item">
@@ -43,7 +43,7 @@
 
               <li class="header-right__item">
                 <router-link
-                  @click="handlerLogout"
+                  @click="handlerLogout()"
                   class="header-right__link"
                   to="/"
                   >Выйти из аккаунта</router-link
@@ -67,10 +67,6 @@ export default {
     ...mapGetters('headerProfileStore', ['users']),
     ...mapGetters('authStore', ['entryStatus']),
 
-    handlerLogout() {
-      this.onLogout();
-    },
-
     lastPageAccount() {
       const pageActive = this.users.find((el) => el.isActive === true);
 
@@ -80,6 +76,16 @@ export default {
 
   methods: {
     ...mapActions('authStore', ['onLogout']),
+
+    handlerLogout() {
+      this.onLogout();
+    },
+  },
+
+  watch: {
+    entryStatus() {
+      console.log(this.entryStatus);
+    },
   },
 };
 </script>

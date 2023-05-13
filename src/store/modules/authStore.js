@@ -11,7 +11,7 @@ const authStore = {
 
     validatorResponse: {},
 
-    entryStatus: localStorage.getItem('entry-status') || null,
+    entryStatus: JSON.parse(localStorage.getItem('entry-status')) || null,
   },
 
   getters: {
@@ -44,9 +44,13 @@ const authStore = {
 
       AuthAPI.login(dataJson)
         .then(function (response) {
-          commit('SET_STATUS', response.status);
+          const status = String(response.status);
+
+          commit('SET_STATUS', status);
 
           commit('SET_VALIDATOR_DATA', {});
+
+          location.reload();
         })
         .catch(function (error) {
           commit('DELETE_STATUS');
@@ -56,6 +60,7 @@ const authStore = {
     },
 
     onLogout({ commit }) {
+      console.log(123232);
       commit('DELETE_STATUS');
 
       AuthAPI.logout();
