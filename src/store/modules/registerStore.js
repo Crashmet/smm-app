@@ -33,6 +33,8 @@ const registerStore = {
       RegisterAPI.register(dataJson)
         .then(function (response) {
           commit('SET_VALIDATOR_DATA', {});
+
+          // location.reload();
         })
         .catch(function (error) {
           commit('SET_VALIDATOR_DATA', error.response.data);

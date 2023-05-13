@@ -60,7 +60,6 @@ const authStore = {
     },
 
     onLogout({ commit }) {
-      console.log(123232);
       commit('DELETE_STATUS');
 
       AuthAPI.logout();

@@ -10,11 +10,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import HeaderProfile from '../AccountSection/HeaderProfile.vue';
 
 export default {
   name: 'Account',
+
   components: { HeaderProfile },
+
+  mounted() {
+    const pageActive = this.users.find((el) => el.isActive === true);
+
+    this.$router.push(pageActive.routerName);
+  },
+
+  computed: {
+    ...mapGetters('headerProfileStore', ['users']),
+  },
 };
 </script>
 

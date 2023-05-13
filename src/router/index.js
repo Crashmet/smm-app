@@ -4,9 +4,18 @@ import Account from '../views/AccountView.vue';
 
 const userRoles = 'admin';
 const isAuthorized = JSON.parse(localStorage.getItem('entry-status')) || null;
+
 const authGuard = function (to, from, next) {
   if (isAuthorized !== '200') {
     next({ path: '/login' });
+  } else {
+    next();
+  }
+};
+
+const enterHome = function (to, from, next) {
+  if (isAuthorized === '200') {
+    next({ path: '/account/bloger&profile' });
   } else {
     next();
   }
@@ -23,9 +32,8 @@ const managerAuthGuard = function (to, from, next) {
 };
 
 const authDone = function (to, from, next) {
-  console.log(isAuthorized, 33);
   if (isAuthorized === '200') {
-    next({ path: '/account' });
+    next({ path: '/account/bloger&profile' });
   } else {
     next();
   }
@@ -146,7 +154,6 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('../views/RegisterView.vue'),
-    beforeEnter: authDone,
   },
 
   {

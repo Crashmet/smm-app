@@ -81,12 +81,6 @@ export default {
       this.onLogout();
     },
   },
-
-  watch: {
-    entryStatus() {
-      console.log(this.entryStatus);
-    },
-  },
 };
 </script>
 
