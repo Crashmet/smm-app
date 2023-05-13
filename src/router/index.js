@@ -6,15 +6,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => {
-      const entryStatus = localStorage.getItem('entry-status');
-
-      console.log(entryStatus);
-
-      const home = HomeView;
-
-      return home;
-    },
+    component: HomeView,
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: Account,
     children: [
       {
         path: 'bloger&profile',

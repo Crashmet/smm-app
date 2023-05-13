@@ -10,26 +10,47 @@
           <p class="header-left__desc">более 50000 блогеров</p>
         </div>
 
-        <div class="header__row_right">
-          <ul class="header-right__list_left">
-            <li class="header-right__item">
-              <router-link class="header-right__link" :to="lastPageAccount"
-                >Контакты</router-link
-              >
-            </li>
+        <div v-if="entryStatus !== 200">
+          <div class="header__row_right">
+            <ul class="header-right__list_left">
+              <li class="header-right__item">
+                <router-link class="header-right__link" to="/"
+                  >Контакты</router-link
+                >
+              </li>
 
-            <li class="header-right__item">
-              <router-link class="header-right__link" to="/register"
-                >Зарегистрироваться</router-link
-              >
-            </li>
-          </ul>
+              <li class="header-right__item">
+                <router-link class="header-right__link" to="/register"
+                  >Зарегистрироваться</router-link
+                >
+              </li>
+            </ul>
 
-          <button class="header-right__button_left">
-            <router-link class="header-right-button__text" to="/login"
-              >Войти</router-link
-            >
-          </button>
+            <router-link to="/login" class="header-right__button_left">
+              <span class="header-right-button__text">Войти</span>
+            </router-link>
+          </div>
+        </div>
+
+        <div v-else>
+          <div class="header__row_right">
+            <ul class="header-right__list_left">
+              <li class="header-right__item">
+                <router-link class="header-right__link" to="/"
+                  >Контакты</router-link
+                >
+              </li>
+
+              <li class="header-right__item">
+                <router-link
+                  @click="handlerLogout"
+                  class="header-right__link"
+                  to="/"
+                  >Выйти из аккаунта</router-link
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -37,18 +58,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Header',
 
   computed: {
     ...mapGetters('headerProfileStore', ['users']),
+    ...mapGetters('authStore', ['entryStatus']),
+
+    handlerLogout() {
+      this.onLogout();
+    },
 
     lastPageAccount() {
       const pageActive = this.users.find((el) => el.isActive === true);
 
       return pageActive.routerName;
     },
+  },
+
+  methods: {
+    ...mapActions('authStore', ['onLogout']),
   },
 };
 </script>

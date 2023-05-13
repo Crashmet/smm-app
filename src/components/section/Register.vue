@@ -122,7 +122,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('registerStore', ['registration']),
+    ...mapActions('registerStore', ['onRegistration']),
 
     handlerSubmit() {
       const registerData = {
@@ -134,7 +134,7 @@ export default {
         username: this.username,
       };
 
-      this.registration(registerData);
+      this.onRegistration(registerData);
 
       this.resetFormPassword();
     },

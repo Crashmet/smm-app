@@ -1,6 +1,6 @@
-import axios from '@/api/index';
+import { AuthAPI } from '@/api/AuthAPI';
 
-const loginStore = {
+const authStore = {
   namespaced: true,
 
   state: {
@@ -11,7 +11,7 @@ const loginStore = {
 
     validatorResponse: {},
 
-    entryStatus: 400,
+    entryStatus: localStorage.getItem('entry-status') || null,
   },
 
   getters: {
@@ -23,6 +23,14 @@ const loginStore = {
   mutations: {
     SET_STATUS(state, status) {
       state.entryStatus = status;
+
+      localStorage.setItem('entry-status', JSON.stringify(status));
+    },
+
+    DELETE_STATUS(state) {
+      state.entryStatus = null;
+
+      localStorage.removeItem('entry-status');
     },
 
     SET_VALIDATOR_DATA(state, validatorResponse) {
@@ -31,23 +39,30 @@ const loginStore = {
   },
 
   actions: {
-    async login({ commit }, loginData) {
+    onLogin({ commit }, loginData) {
       const dataJson = JSON.stringify(loginData);
 
-      console.log(dataJson);
-
-      await axios
-        .post(`login/`, dataJson)
+      AuthAPI.login(dataJson)
         .then(function (response) {
           commit('SET_STATUS', response.status);
 
           commit('SET_VALIDATOR_DATA', {});
         })
         .catch(function (error) {
+          commit('DELETE_STATUS');
+
           commit('SET_VALIDATOR_DATA', error.response.data);
         });
+    },
+
+    onLogout({ commit }) {
+      commit('DELETE_STATUS');
+
+      AuthAPI.logout();
+
+      location.reload();
     },
   },
 };
 
-export default loginStore;
+export default authStore;

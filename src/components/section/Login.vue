@@ -69,11 +69,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('loginStore', ['validatorResponse', 'entryStatus']),
+    ...mapGetters('authStore', ['validatorResponse', 'entryStatus']),
   },
 
   methods: {
-    ...mapActions('loginStore', ['login']),
+    ...mapActions('authStore', ['onLogin']),
 
     handlerSubmit() {
       const loginData = {
@@ -81,7 +81,7 @@ export default {
         password: this.password,
       };
 
-      this.login(loginData);
+      this.onLogin(loginData);
 
       this.resetFormPassword();
     },
@@ -118,14 +118,9 @@ export default {
     },
 
     entryStatus() {
+      console.log(this.entryStatus);
       if (this.entryStatus === 200) {
-        console.log(this.entryStatus);
-
-        localStorage.setItem('entry-status', JSON.stringify(this.entryStatus));
-
-        this.$router.beforeEach((to, from, next) => {
-          next({ path: '/' });
-        });
+        this.$router.push({ path: '/' });
       }
     },
   },

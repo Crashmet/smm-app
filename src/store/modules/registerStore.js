@@ -1,4 +1,4 @@
-import axios from '@/api/index';
+import { RegisterAPI } from '@/api/RegisterAPI';
 
 const registerStore = {
   namespaced: true,
@@ -27,11 +27,10 @@ const registerStore = {
   },
 
   actions: {
-    async registration({ commit }, registerData) {
+    onRegistration({ commit }, registerData) {
       const dataJson = JSON.stringify(registerData);
 
-      await axios
-        .post(`register/`, dataJson)
+      RegisterAPI.register(dataJson)
         .then(function (response) {
           commit('SET_VALIDATOR_DATA', {});
         })

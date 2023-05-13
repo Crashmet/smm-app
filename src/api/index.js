@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const DefaultCongig = {
+const defaultCongig = {
   baseURL: process.env.VUE_APP_ACC_API_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -8,4 +8,6 @@ const DefaultCongig = {
   },
 };
 
-export const DefaultAPIInstance = axios.create(DefaultCongig);
+const defaultAPIInstance = axios.create(defaultCongig);
+
+export default defaultAPIInstance;
