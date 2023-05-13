@@ -1,4 +1,4 @@
-import axios from '@/plugins/axios/index';
+import axios from '@/api/index';
 
 const loginStore = {
   namespaced: true,
@@ -10,13 +10,21 @@ const loginStore = {
     },
 
     validatorResponse: {},
+
+    entryStatus: 400,
   },
 
   getters: {
     validatorResponse: ({ validatorResponse }) => validatorResponse,
+
+    entryStatus: ({ entryStatus }) => entryStatus,
   },
 
   mutations: {
+    SET_STATUS(state, status) {
+      state.entryStatus = status;
+    },
+
     SET_VALIDATOR_DATA(state, validatorResponse) {
       state.validatorResponse = validatorResponse;
     },
@@ -29,14 +37,10 @@ const loginStore = {
       console.log(dataJson);
 
       await axios
-        .post(`login/`, dataJson, {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        })
+        .post(`login/`, dataJson)
         .then(function (response) {
-          console.log(response);
+          commit('SET_STATUS', response.status);
+
           commit('SET_VALIDATOR_DATA', {});
         })
         .catch(function (error) {

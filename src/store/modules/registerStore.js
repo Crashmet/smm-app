@@ -1,4 +1,4 @@
-import axios from '@/plugins/axios/index';
+import axios from '@/api/index';
 
 const registerStore = {
   namespaced: true,
@@ -31,12 +31,7 @@ const registerStore = {
       const dataJson = JSON.stringify(registerData);
 
       await axios
-        .post(`register/`, dataJson, {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        })
+        .post(`register/`, dataJson)
         .then(function (response) {
           commit('SET_VALIDATOR_DATA', {});
         })

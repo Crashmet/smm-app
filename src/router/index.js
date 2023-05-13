@@ -1,36 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import Account from '../views/AccountView.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
-  },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: () => import('../views/AdminView.vue'),
-  },
-  {
-    path: '/search-result',
-    name: 'search-result',
-    component: () => import('../views/SearchResultView.vue'),
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue'),
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: () => import('../views/RegisterView.vue'),
-  },
-  {
-    path: '/account',
-    name: 'Account',
-    component: () => import('../views/AccountView.vue'),
+    component: () => {
+      const entryStatus = localStorage.getItem('entry-status');
+
+      console.log(entryStatus);
+
+      const home = HomeView;
+
+      return home;
+    },
     children: [
       {
         path: 'bloger&profile',
@@ -102,6 +86,27 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/AdminView.vue'),
+  },
+  {
+    path: '/search-result',
+    name: 'search-result',
+    component: () => import('../views/SearchResultView.vue'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue'),
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterView.vue'),
+  },
+
   {
     path: '/:pathMatch(.*)*',
     component: () => import('../views/NotFoundViev.vue'),

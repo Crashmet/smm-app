@@ -69,7 +69,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('loginStore', ['validatorResponse']),
+    ...mapGetters('loginStore', ['validatorResponse', 'entryStatus']),
   },
 
   methods: {
@@ -113,10 +113,20 @@ export default {
 
   watch: {
     validatorResponse() {
-      console.log(this.validatorResponse);
-
       this.resetValidatorMassages();
       this.addValidatorMassages();
+    },
+
+    entryStatus() {
+      if (this.entryStatus === 200) {
+        console.log(this.entryStatus);
+
+        localStorage.setItem('entry-status', JSON.stringify(this.entryStatus));
+
+        this.$router.beforeEach((to, from, next) => {
+          next({ path: '/' });
+        });
+      }
     },
   },
 };
