@@ -3,7 +3,12 @@ import HomeView from '../views/HomeView.vue';
 import Account from '../views/AccountView.vue';
 
 const userRoles = 'admin';
+let lastPageAccount = '/account/bloger&profile';
 const isAuthorized = JSON.parse(localStorage.getItem('entry-status')) || null;
+
+function searchLastPageAccount(to) {
+  lastPageAccount = to.matched[1].path;
+}
 
 const authGuard = function (to, from, next) {
   if (isAuthorized !== '200') {
@@ -13,9 +18,19 @@ const authGuard = function (to, from, next) {
   }
 };
 
-const enterHome = function (to, from, next) {
+const accountChildsGuard = function (to, from, next) {
+  if (isAuthorized !== '200') {
+    next({ path: '/login' });
+  } else {
+    searchLastPageAccount(to);
+
+    next();
+  }
+};
+
+const homeGuard = function (to, from, next) {
   if (isAuthorized === '200') {
-    location.reload();
+    next({ path: lastPageAccount });
   } else {
     next();
   }
@@ -44,7 +59,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    beforeEnter: enterHome,
+    beforeEnter: homeGuard,
   },
   {
     path: '/account',
@@ -56,46 +71,46 @@ const routes = [
         path: 'bloger&profile',
         component: () =>
           import('../components/AccountSection/BlogerProfile.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
       },
       {
         path: 'bloger&finance',
         component: () =>
           import('../components/AccountSection/BlogerFinance.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
       },
       {
         path: 'bloger&orders',
         component: () =>
           import('../components/AccountSection/BlogerOrders.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
       },
 
       {
         path: 'advertiser&profile',
         component: () =>
           import('../components/AccountSection/AdvertiserProfile.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
       },
       {
         path: 'advertiser&finance',
         component: () =>
           import('../components/AccountSection/AdvertiserFinance.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
       },
       {
         path: 'advertiser&orders',
         component: () =>
           import('../components/AccountSection/AdvertiserOrders.vue'),
-        beforeEnter: authGuard,
+        beforeEnter: accountChildsGuard,
         children: [
           {
-            path: 'home',
+            path: '',
             component: () =>
               import(
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersHome.vue'
               ),
-            beforeEnter: authGuard,
+            beforeEnter: accountChildsGuard,
           },
           {
             path: 'new-order',
@@ -103,7 +118,7 @@ const routes = [
               import(
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersNewOrder.vue'
               ),
-            beforeEnter: authGuard,
+            beforeEnter: accountChildsGuard,
           },
           {
             path: 'select',
@@ -111,7 +126,7 @@ const routes = [
               import(
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersSelect.vue'
               ),
-            beforeEnter: authGuard,
+            beforeEnter: accountChildsGuard,
           },
           {
             path: 'inspection',
@@ -119,7 +134,7 @@ const routes = [
               import(
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersInspection.vue'
               ),
-            beforeEnter: authGuard,
+            beforeEnter: accountChildsGuard,
           },
           {
             path: 'chat',
@@ -127,7 +142,7 @@ const routes = [
               import(
                 '../components/AdvertiserOrdersPages/AdvertiserOrdersChat.vue'
               ),
-            beforeEnter: authGuard,
+            beforeEnter: accountChildsGuard,
           },
         ],
       },
