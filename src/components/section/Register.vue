@@ -118,7 +118,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('registerStore', ['validatorResponse']),
+    ...mapGetters('registerStore', ['validatorResponse', 'entryStatus']),
   },
 
   methods: {
@@ -175,6 +175,12 @@ export default {
     validatorResponse() {
       this.resetValidatorMassages();
       this.addValidatorMassages();
+    },
+
+    entryStatus() {
+      if (this.entryStatus === '201') {
+        this.$router.push({ path: '/' });
+      }
     },
   },
 };

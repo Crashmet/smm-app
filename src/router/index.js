@@ -15,7 +15,7 @@ const authGuard = function (to, from, next) {
 
 const enterHome = function (to, from, next) {
   if (isAuthorized === '200') {
-    next({ path: '/account/bloger&profile' });
+    location.reload();
   } else {
     next();
   }
@@ -44,7 +44,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    beforeEnter: authDone,
+    beforeEnter: enterHome,
   },
   {
     path: '/account',
@@ -154,6 +154,7 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('../views/RegisterView.vue'),
+    beforeEnter: authDone,
   },
 
   {
