@@ -34,7 +34,7 @@
           </div>
 
           <button
-            @click="handlerSubmit"
+            @click="handlerSubmit()"
             type="submit"
             class="login__submit-btn"
           >
@@ -68,10 +68,6 @@ export default {
     };
   },
 
-  computed: {
-    ...mapGetters('authStore', ['validatorResponse', 'entryStatus']),
-  },
-
   methods: {
     ...mapActions('authStore', ['onLogin']),
 
@@ -81,11 +77,9 @@ export default {
         password: this.password,
       };
 
-      this.onLogin(loginData);
+      this.onLogin(loginData).then(() => {});
 
       this.resetFormPassword();
-
-      // location.reload();
     },
 
     resetFormPassword() {

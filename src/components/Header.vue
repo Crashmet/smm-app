@@ -10,7 +10,7 @@
           <p class="header-left__desc">более 50000 блогеров</p>
         </div>
 
-        <div v-if="entryStatus !== '200'">
+        <div v-if="access_token === null">
           <div class="header__row_right">
             <ul class="header-right__list_left">
               <li class="header-right__item">
@@ -65,7 +65,7 @@ export default {
 
   computed: {
     ...mapGetters('headerProfileStore', ['users']),
-    ...mapGetters('authStore', ['entryStatus']),
+    ...mapGetters('authStore', ['access_token']),
 
     lastPageAccount() {
       const pageActive = this.users.find((el) => el.isActive === true);

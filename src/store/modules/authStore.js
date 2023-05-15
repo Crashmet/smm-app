@@ -11,26 +11,35 @@ const authStore = {
 
     validatorResponse: {},
 
-    entryStatus: JSON.parse(localStorage.getItem('entry-status')) || null,
+    access_token: localStorage.getItem('access_token') || null,
+
+    refresh_token: localStorage.getItem('refresh_token') || null,
   },
 
   getters: {
     validatorResponse: ({ validatorResponse }) => validatorResponse,
 
-    entryStatus: ({ entryStatus }) => entryStatus,
+    access_token: ({ access_token }) => access_token,
   },
 
   mutations: {
-    SET_STATUS(state, status) {
-      state.entryStatus = status;
+    SET_ACCESS_TOKEN(state, token) {
+      console.log(state.access_token);
 
-      localStorage.setItem('entry-status', JSON.stringify(status));
+      state.access_token = token;
+
+      localStorage.setItem('access_token', token);
     },
 
-    DELETE_STATUS(state) {
-      state.entryStatus = null;
+    SET_REFRESH_TOKEN(state, token) {
+      state.refresh_token = token;
 
-      localStorage.removeItem('entry-status');
+      localStorage.setItem('refresh_token', token);
+    },
+
+    DELETE_STATUS() {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
     },
 
     SET_VALIDATOR_DATA(state, validatorResponse) {
@@ -44,9 +53,10 @@ const authStore = {
 
       AuthAPI.login(dataJson)
         .then(function (response) {
-          const status = String(response.status);
+          console.log(response.data);
 
-          commit('SET_STATUS', status);
+          commit('SET_ACCESS_TOKEN', response.data.access);
+          commit('SET_REFRESH_TOKEN', response.data.refresh);
 
           commit('SET_VALIDATOR_DATA', {});
 

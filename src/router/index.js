@@ -4,14 +4,14 @@ import Account from '../views/AccountView.vue';
 
 const userRoles = 'admin';
 let lastPageAccount = '/account/bloger&profile';
-const isAuthorized = JSON.parse(localStorage.getItem('entry-status')) || null;
+const isAuthorized = localStorage.getItem('access_token') || null;
 
 function searchLastPageAccount(to) {
   lastPageAccount = to.matched[1].path;
 }
 
 const authGuard = function (to, from, next) {
-  if (isAuthorized !== '200') {
+  if (isAuthorized === null) {
     next({ path: '/login' });
   } else {
     next();
@@ -19,7 +19,7 @@ const authGuard = function (to, from, next) {
 };
 
 const accountChildsGuard = function (to, from, next) {
-  if (isAuthorized !== '200') {
+  if (isAuthorized === null) {
     next({ path: '/login' });
   } else {
     searchLastPageAccount(to);
@@ -29,7 +29,7 @@ const accountChildsGuard = function (to, from, next) {
 };
 
 const homeGuard = function (to, from, next) {
-  if (isAuthorized === '200') {
+  if (isAuthorized !== null) {
     next({ path: lastPageAccount });
   } else {
     next();
@@ -37,7 +37,7 @@ const homeGuard = function (to, from, next) {
 };
 
 const managerAuthGuard = function (to, from, next) {
-  if (isAuthorized !== '200') {
+  if (isAuthorized === null) {
     next({ path: '/login' });
   } else if (userRoles !== 'admin') {
     next({ path: '/' });
@@ -47,7 +47,7 @@ const managerAuthGuard = function (to, from, next) {
 };
 
 const authDone = function (to, from, next) {
-  if (isAuthorized === '200') {
+  if (isAuthorized !== null) {
     next({ path: '/account/bloger&profile' });
   } else {
     next();
