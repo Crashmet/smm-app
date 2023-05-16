@@ -77,7 +77,7 @@ export default {
         password: this.password,
       };
 
-      this.onLogin(loginData).then(() => {});
+      this.onLogin(loginData);
 
       this.resetFormPassword();
     },

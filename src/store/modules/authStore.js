@@ -53,8 +53,6 @@ const authStore = {
 
       AuthAPI.login(dataJson)
         .then(function (response) {
-          console.log(response.data);
-
           commit('SET_ACCESS_TOKEN', response.data.access);
           commit('SET_REFRESH_TOKEN', response.data.refresh);
 
