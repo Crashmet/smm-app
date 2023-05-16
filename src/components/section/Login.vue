@@ -10,7 +10,7 @@
               v-model="username"
               type="text"
               class="login__input"
-              placeholder="Username"
+              placeholder="Логин"
             />
 
             <template v-if="validatorUsername.length">
@@ -23,7 +23,7 @@
               v-model="password"
               type="password"
               class="login__input login__input_pass-1"
-              placeholder="Пароль 1"
+              placeholder="Пароль"
             />
 
             <template v-if="validatorPassword.length || nonFieldErrors.length">
