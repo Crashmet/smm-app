@@ -77,8 +77,8 @@ const headerProfileStore = {
       });
     },
 
-    SET_BLOGER_MENU_ROUTER({ blogerMenu }, routerName) {
-      blogerMenu.forEach((el) => {
+    SET_BLOGER_MENU_ROUTER({ users }, routerName) {
+      users.forEach((el) => {
         if (el.name === 'Блогер') {
           el.routerName = routerName;
         }
@@ -94,8 +94,8 @@ const headerProfileStore = {
       });
     },
 
-    SET_ADVERTISER_MENU_ROUTER({ advertiserMenu }, routerName) {
-      advertiserMenu.forEach((el) => {
+    SET_ADVERTISER_MENU_ROUTER({ users }, routerName) {
+      users.forEach((el) => {
         if (el.name === 'Рекламодатель') {
           el.routerName = routerName;
         }
