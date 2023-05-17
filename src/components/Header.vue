@@ -29,6 +29,65 @@
             <router-link to="/login" class="header-right__button_left">
               <span class="header-right-button__text">Войти</span>
             </router-link>
+
+            <button
+              class="header-right__menu"
+              @click="isActiveMenu = !isActiveMenu"
+            >
+              <svg
+                width="30"
+                height="20"
+                viewBox="0 0 30 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="30" height="3" fill="black"></rect>
+                <rect y="10" width="30" height="3" fill="black"></rect>
+                <rect y="20" width="30" height="3" fill="black"></rect>
+              </svg>
+            </button>
+
+            <div
+              class="header-absolute__menu"
+              :style="isActiveMenu ? 'display:block' : ''"
+            >
+              <ul class="header-absolute__list">
+                <li class="header-absolute__item">
+                  <button
+                    class="header-absolute__btn"
+                    @click="isActiveMenu = !isActiveMenu"
+                  >
+                    <svg
+                      width="23"
+                      height="25"
+                      viewBox="0 0 23 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                        fill="#333333"
+                      ></path>
+                      <path
+                        d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z"
+                        fill="#333333"
+                      ></path>
+                    </svg>
+                  </button>
+                </li>
+                <li class="header-absolute__item">
+                  <router-link class="header-absolute__link" to="/"
+                    >Контакты</router-link
+                  >
+                </li>
+
+                <li class="header-absolute__item">
+                  <router-link class="header-absolute__link" to="/register"
+                    >Зарегистрироваться</router-link
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -50,6 +109,68 @@
                 >
               </li>
             </ul>
+
+            <button
+              class="header-right__menu"
+              @click="isActiveMenu = !isActiveMenu"
+            >
+              <svg
+                width="30"
+                height="20"
+                viewBox="0 0 30 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="30" height="3" fill="black"></rect>
+                <rect y="10" width="30" height="3" fill="black"></rect>
+                <rect y="20" width="30" height="3" fill="black"></rect>
+              </svg>
+            </button>
+
+            <div
+              class="header-absolute__menu"
+              :style="isActiveMenu ? 'display:block' : ''"
+            >
+              <ul class="header-absolute__list">
+                <li class="header-absolute__item">
+                  <button
+                    class="header-absolute__btn"
+                    @click="isActiveMenu = !isActiveMenu"
+                  >
+                    <svg
+                      width="23"
+                      height="25"
+                      viewBox="0 0 23 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                        fill="#333333"
+                      ></path>
+                      <path
+                        d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z"
+                        fill="#333333"
+                      ></path>
+                    </svg>
+                  </button>
+                </li>
+                <li class="header-absolute__item">
+                  <router-link class="header-absolute__link" to="/"
+                    >Контакты</router-link
+                  >
+                </li>
+
+                <li class="header-absolute__item">
+                  <router-link
+                    @click="handlerLogout()"
+                    class="header-absolute__link"
+                    to="/"
+                    >Выйти из аккаунта</router-link
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -62,6 +183,12 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Header',
+
+  data() {
+    return {
+      isActiveMenu: false,
+    };
+  },
 
   computed: {
     ...mapGetters('headerProfileStore', ['users']),
@@ -226,6 +353,59 @@ export default {
   color: #ffffff;
 }
 
+.header-right__menu {
+  display: none;
+  background-color: transparent;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.header-absolute__menu {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  right: 0px;
+  top: 0px;
+  padding: 1.4rem 2rem 2.2rem;
+  background: #ffffff;
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 20px 0px 20px 20px;
+  transform: translateX(101%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.header-absolute__list {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+
+.header-absolute__item {
+  margin-bottom: 0.5556rem;
+}
+
+.header-absolute__link {
+  font-size: 1rem;
+  color: #0d0d0d;
+  -webkit-transition: color 0.2s ease-in;
+  -o-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.header-absolute__link:hover,
+.header-absolute__link:active {
+  color: #ff3600;
+  -webkit-transition: color 0.2s ease-in;
+  -o-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.header-absolute__btn {
+  background-color: transparent;
+  align-items: center;
+  margin-bottom: 0.6667rem;
+}
+
 @media (max-width: 960px) {
   .header__row_left {
     -webkit-box-orient: vertical;
@@ -245,6 +425,15 @@ export default {
 @media (max-width: 768px) {
   .header-right__list_left {
     display: none;
+  }
+
+  .header-right__menu {
+    display: flex;
+  }
+
+  .header-absolute__menu {
+    transform: translateX(0%);
+    transition: transform 0.4s ease-in-out;
   }
 }
 
