@@ -6,6 +6,7 @@
       <Login />
       <Statistics />
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Header from '../components/Header.vue';
 import Search from '../components/section/Search.vue';
 import Login from '../components/section/Login.vue';
 import Statistics from '../components/section/Statistics.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'LogintView',
@@ -22,6 +24,7 @@ export default {
     Search,
     Login,
     Statistics,
+    Footer,
   },
 };
 </script>

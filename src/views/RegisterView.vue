@@ -6,6 +6,7 @@
       <Register />
       <Statistics />
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Header from '../components/Header.vue';
 import Search from '../components/section/Search.vue';
 import Register from '../components/section/Register.vue';
 import Statistics from '../components/section/Statistics.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'RegisterView',
@@ -22,6 +24,7 @@ export default {
     Search,
     Register,
     Statistics,
+    Footer,
   },
 };
 </script>
