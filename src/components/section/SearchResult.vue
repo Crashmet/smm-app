@@ -179,6 +179,50 @@
         </li>
       </ul>
     </div>
+
+    <div class="search-pagination">
+      <button class="search-pagination__btn left-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="search-pagination__icon left-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+      </button>
+      <div class="search-page-numbers page-numbers">
+        <button class="page-numbers__btn page-numbers__btn_selected">1</button>
+        <button class="page-numbers__btn">2</button>
+        <button class="page-numbers__btn">3</button>
+        <button class="page-numbers__btn">4</button>
+        <span class="page-numbers__dots">...</span>
+        <button class="page-numbers__btn">23</button>
+      </div>
+
+      <button class="search-pagination__btn right-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="search-pagination__icon right-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </button>
+    </div>
   </section>
 </template>
 
@@ -198,6 +242,7 @@ export default {
 
 .search-result {
   margin-top: 3.8889rem;
+  margin-bottom: 5.6111rem;
 }
 
 .search-result__container {
@@ -210,7 +255,7 @@ export default {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-bottom: 3.3333rem;
+  margin-bottom: 20px;
 }
 
 .search-result__item-card {
@@ -231,6 +276,48 @@ export default {
 
 .item-card__item-description:not(:last-child) {
   margin-bottom: 0.2222rem;
+}
+
+/* pagination  */
+
+.search-pagination,
+.page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8889rem;
+}
+
+.search-pagination__btn {
+  padding: 0.4444rem;
+  width: 2.3333rem;
+  height: 2.3333rem;
+  color: rgba(255, 54, 0, 0.8);
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 54, 0, 0.8);
+  cursor: pointer;
+}
+
+.search-pagination__btn:hover,
+.page-numbers__btn:hover {
+  background-color: rgba(255, 54, 0, 0.8);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.page-numbers__btn {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.page-numbers__btn_selected {
+  background-color: rgba(255, 54, 0, 0.8);
+  color: #fff;
 }
 
 @media (max-width: 1199px) {
@@ -273,6 +360,11 @@ export default {
 
   .item-card__item-description:not(:last-child) {
     margin-bottom: 2px;
+  }
+
+  .search-pagination__btn {
+    width: 30.9994px;
+    height: 30.9994px;
   }
 }
 
