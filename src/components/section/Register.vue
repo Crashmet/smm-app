@@ -82,7 +82,7 @@
           </div>
 
           <button
-            @click="handlerSubmit"
+            @click.prevent="handlerSubmit"
             type="submit"
             class="register__submit-btn"
           >

@@ -34,7 +34,7 @@
           </div>
 
           <button
-            @click="handlerSubmit()"
+            @click.prevent="handlerSubmit()"
             type="submit"
             class="login__submit-btn"
           >

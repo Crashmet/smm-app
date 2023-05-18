@@ -3,13 +3,17 @@
     <div class="search__container container">
       <div class="search__bar">
         <div class="search-bar__line">
-          <input class="search-line__input" type="text" v-model="searchInput" />
-          <router-link class="search-line__btn" to="/search-result">
+          <input
+            class="search-line__input"
+            type="text"
+            v-model.trim="searchInput"
+          />
+          <button class="search-line__btn" @click.prevent="handlerClickSearch">
             <span class="search-line-btn__text">поиск</span>
-          </router-link>
+          </button>
         </div>
-        <template v-if="searchInput.length > 0">
-          <p class="search-bar__desc">Выдача по слову «{{ searchInput }}»</p>
+        <template v-if="searchResult.length > 0">
+          <p class="search-bar__desc">Выдача по слову «{{ searchResult }}»</p>
         </template>
       </div>
 
@@ -58,7 +62,10 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
+  // добавь сброс шевронов !!!!!*************
+
   name: 'Search',
   data() {
     return {
@@ -70,8 +77,31 @@ export default {
       isGenderActive: false,
       isRegionActive: false,
     };
+  },
 
-    // добавь сброс шевронов !!!!!*************
+  computed: {
+    ...mapGetters('searchStore', ['searchResult']),
+  },
+
+  methods: {
+    ...mapActions('searchStore', ['setSearchResult']),
+
+    handlerClickSearch() {
+      if (this.searchInput.length > 0) {
+        this.$router.push({ path: '/search-result' });
+      }
+
+      this.setSearchResult(this.searchInput);
+      this.clearSearchInput();
+    },
+
+    clearSearchInput() {
+      this.searchInput = '';
+    },
+  },
+
+  watch: {
+    searchResult() {},
   },
 };
 </script>

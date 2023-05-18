@@ -91,6 +91,13 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .footer {
   margin-top: 2.7778rem;
   margin-bottom: 2.7778rem;
@@ -101,7 +108,11 @@ export default {
 }
 
 .footer__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -247,7 +258,7 @@ export default {
   box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.25);
 }
 .footer-subscribe__input {
-  padding-left: 12px;
+  padding-left: 0.6667rem;
   width: 100%;
   height: 2.2rem;
   border: none;
