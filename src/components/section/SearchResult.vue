@@ -48,8 +48,12 @@
       </ul>
     </div>
 
-    <div class="search-pagination">
-      <button class="search-pagination__btn left-btn">
+    <div v-if="countPages > 1" class="search-pagination">
+      <button
+        v-if="activePage > 1"
+        @click="handlerClickPrevPage()"
+        class="search-pagination__btn left-btn"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -65,16 +69,71 @@
           />
         </svg>
       </button>
+
       <div class="search-page-numbers page-numbers">
-        <button class="page-numbers__btn page-numbers__btn_selected">1</button>
-        <button class="page-numbers__btn">2</button>
-        <button class="page-numbers__btn">3</button>
-        <button class="page-numbers__btn">4</button>
-        <span class="page-numbers__dots">...</span>
-        <button class="page-numbers__btn">{{ countPages }}</button>
+        <button
+          v-if="activePage > 3"
+          @click="handlerClickActivePage(1)"
+          class="page-numbers__btn"
+        >
+          1
+        </button>
+
+        <span v-if="activePage > 3 && countPages > 5" class="page-numbers__dots"
+          >...</span
+        >
+
+        <button
+          v-if="activePage > 1"
+          @click="handlerClickActivePage(activePage - 1)"
+          class="page-numbers__btn"
+        >
+          {{ activePage - 1 }}
+        </button>
+
+        <button
+          @click="handlerClickActivePage(activePage)"
+          class="page-numbers__btn page-numbers__btn_selected"
+        >
+          {{ activePage }}
+        </button>
+
+        <button
+          v-if="countPages > activePage + 1"
+          @click="handlerClickActivePage(activePage + 1)"
+          class="page-numbers__btn"
+        >
+          {{ activePage + 1 }}
+        </button>
+
+        <button
+          v-if="countPages > activePage + 2"
+          @click="handlerClickActivePage(activePage + 2)"
+          class="page-numbers__btn"
+        >
+          {{ activePage + 2 }}
+        </button>
+
+        <span
+          v-if="countPages > activePage + 3 && countPages > 3"
+          class="page-numbers__dots"
+          >...</span
+        >
+
+        <button
+          v-if="countPages !== activePage"
+          @click="handlerClickActivePage(countPages)"
+          class="page-numbers__btn"
+        >
+          {{ countPages }}
+        </button>
       </div>
 
-      <button class="search-pagination__btn right-btn">
+      <button
+        v-if="countPages !== activePage"
+        @click="handlerClickNextPage()"
+        class="search-pagination__btn right-btn"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -102,7 +161,7 @@ export default {
 
   data() {
     return {
-      page: 1,
+      activePage: 1,
 
       pageSize: null,
     };
@@ -117,11 +176,7 @@ export default {
       this.pageSize = 12;
     }
 
-    window.history.pushState(
-      null,
-      document.title,
-      `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
-    );
+    this.historyPushState();
   },
 
   unmounted() {
@@ -129,13 +184,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('searchStore', [
-      'searchRequest',
-      'count',
-      'next',
-      'previous',
-      'searchResult',
-    ]),
+    ...mapGetters('searchStore', ['searchRequest', 'count', 'searchResult']),
 
     countPages() {
       return Math.ceil(this.count / this.pageSize);
@@ -143,20 +192,43 @@ export default {
   },
 
   methods: {
-    ...mapActions('searchStore', ['setSearchRequest']),
+    ...mapActions('searchStore', ['setSearchRequest', 'addSearchResult']),
+
+    historyPushState() {
+      window.history.pushState(
+        window.history.state,
+        document.title,
+        `${window.location.pathname}#/search-result?page=${this.activePage}&page_size=${this.pageSize}&search=${this.searchRequest}`
+      );
+    },
+
+    handlerClickNextPage() {
+      this.activePage++;
+    },
+
+    handlerClickPrevPage() {
+      this.activePage--;
+    },
+
+    handlerClickActivePage(value) {
+      // console.log(e.target.textContent);
+      this.activePage = value;
+    },
   },
 
   watch: {
     searchRequest() {
-      window.history.pushState(
-        window.history.state,
-        document.title,
-        `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
-      );
+      this.historyPushState();
     },
 
-    searchResult() {
-      console.log(this.searchResult);
+    activePage() {
+      this.addSearchResult({
+        activePage: this.activePage,
+        pageSize: this.pageSize,
+        searchInput: this.searchRequest,
+      });
+
+      this.historyPushState();
     },
   },
 };

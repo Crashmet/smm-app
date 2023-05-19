@@ -155,7 +155,7 @@ const routes = [
     beforeEnter: managerAuthGuard,
   },
   {
-    path: '/search-result',
+    path: '/search-result?page=&page_size=&search=`',
     name: 'search-result',
     component: () => import('../views/SearchResultView.vue'),
   },

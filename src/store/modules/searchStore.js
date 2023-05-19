@@ -6,9 +6,7 @@ const searchStore = {
   state: {
     searchRequest: '',
 
-    count: 1954,
-    next: 'http://62.109.29.175:8000/api/bloggers/?page=5',
-    previous: 'http://62.109.29.175:8000/api/bloggers/?page=3',
+    count: null,
     searchResult: [],
   },
 
@@ -16,14 +14,16 @@ const searchStore = {
     searchRequest: ({ searchRequest }) => searchRequest,
 
     count: ({ count }) => count,
-    next: ({ next }) => next,
-    previous: ({ previous }) => previous,
     searchResult: ({ searchResult }) => searchResult,
   },
 
   mutations: {
     SET_SEARCH_REQUEST(state, searchInput) {
       state.searchRequest = searchInput;
+    },
+
+    SET_COUNT_CARDS(state, count) {
+      state.count = count;
     },
 
     ADD_SEARCH_RESULT(state, results) {
@@ -56,11 +56,12 @@ const searchStore = {
       commit('SET_SEARCH_REQUEST', searchInput);
     },
 
-    addSearchResult({ commit }, { pageSize, searchInput }) {
-      BloggerAPI.getSearchResult(pageSize, searchInput)
+    addSearchResult({ commit }, { activePage, pageSize, searchInput }) {
+      BloggerAPI.getSearchResult(activePage, pageSize, searchInput)
         .then(function (response) {
           console.log(response.data);
 
+          commit('SET_COUNT_CARDS', response.data.count);
           commit('ADD_SEARCH_RESULT', response.data.results);
         })
         .catch(function (error) {

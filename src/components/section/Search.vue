@@ -101,17 +101,17 @@ export default {
     ...mapActions('searchStore', ['setSearchRequest', 'addSearchResult']),
 
     handlerClickSearch() {
-      if (this.searchInput.length > 0) {
-        this.$router.push({ path: '/search-result' });
-      }
+      this.$router.push({ name: 'search-result' });
 
       this.addSearchResult({
+        activePage: 1,
         pageSize: this.pageSize,
         searchInput: this.searchInput,
       });
 
       this.setSearchRequest(this.searchInput);
-      this.clearSearchInput();
+
+      // this.clearSearchInput();
     },
 
     clearSearchInput() {
