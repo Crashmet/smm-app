@@ -12,8 +12,8 @@
             <span class="search-line-btn__text">поиск</span>
           </button>
         </div>
-        <template v-if="searchResult.length > 0">
-          <p class="search-bar__desc">Выдача по слову «{{ searchResult }}»</p>
+        <template v-if="searchRequest.length > 0">
+          <p class="search-bar__desc">Выдача по слову «{{ searchRequest }}»</p>
         </template>
       </div>
 
@@ -63,13 +63,17 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
   // добавь сброс шевронов !!!!!*************
 
   name: 'Search',
+
   data() {
     return {
       searchInput: '',
+
+      pageSize: '',
 
       isCategoryActive: false,
       isBrandActive: false,
@@ -79,19 +83,34 @@ export default {
     };
   },
 
+  created() {
+    const maxWidth = window.screen.width;
+
+    if (maxWidth === 735) {
+      this.pageSize = 10;
+    } else {
+      this.pageSize = 12;
+    }
+  },
+
   computed: {
-    ...mapGetters('searchStore', ['searchResult']),
+    ...mapGetters('searchStore', ['searchRequest']),
   },
 
   methods: {
-    ...mapActions('searchStore', ['setSearchResult']),
+    ...mapActions('searchStore', ['setSearchRequest', 'addSearchResult']),
 
     handlerClickSearch() {
       if (this.searchInput.length > 0) {
         this.$router.push({ path: '/search-result' });
+
+        this.addSearchResult({
+          pageSize: this.pageSize,
+          searchInput: this.searchInput,
+        });
       }
 
-      this.setSearchResult(this.searchInput);
+      this.setSearchRequest(this.searchInput);
       this.clearSearchInput();
     },
 
@@ -101,7 +120,7 @@ export default {
   },
 
   watch: {
-    searchResult() {},
+    searchRequest() {},
   },
 };
 </script>

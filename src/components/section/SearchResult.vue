@@ -23,160 +23,6 @@
             </li>
           </ul>
         </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
-
-        <li class="search-result__item-card item-card">
-          <div class="item-card__img"></div>
-
-          <ul class="item-card__list-description">
-            <li class="item-card__item-description item-description">
-              Аккаунт
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li>
-            <li class="item-card__item-description item-description">
-              Дата создания:
-            </li>
-          </ul>
-        </li>
       </ul>
     </div>
 
@@ -203,7 +49,7 @@
         <button class="page-numbers__btn">3</button>
         <button class="page-numbers__btn">4</button>
         <span class="page-numbers__dots">...</span>
-        <button class="page-numbers__btn">23</button>
+        <button class="page-numbers__btn">{{ countPages }}</button>
       </div>
 
       <button class="search-pagination__btn right-btn">
@@ -227,8 +73,72 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'SearchResult',
+
+  data() {
+    return {
+      page: 1,
+
+      pageSize: null,
+    };
+  },
+
+  created() {
+    const maxWidth = window.screen.width;
+
+    if (maxWidth === 735) {
+      this.pageSize = 10;
+    } else {
+      this.pageSize = 12;
+    }
+
+    window.history.pushState(
+      null,
+      document.title,
+      `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
+    );
+
+    // const windowData = Object.fromEntries(
+    //   new URL(window.location).searchParams.entries()
+    // );
+
+    // const VALID_KEYS = ['page', 'page_size', 'search'];
+  },
+
+  unmounted() {
+    this.setSearchRequest('');
+  },
+
+  computed: {
+    ...mapGetters('searchStore', [
+      'searchRequest',
+      'count',
+      'next',
+      'previous',
+      'searchResult',
+    ]),
+
+    countPages() {
+      return Math.ceil(this.count / this.pageSize);
+    },
+  },
+
+  methods: {
+    ...mapActions('searchStore', ['setSearchRequest']),
+  },
+
+  watch: {
+    searchRequest() {
+      window.history.pushState(
+        window.history.state,
+        document.title,
+        `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
+      );
+    },
+  },
 };
 </script>
 
@@ -282,8 +192,14 @@ export default {
 
 .search-pagination,
 .page-numbers {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   gap: 0.8889rem;
 }
@@ -303,6 +219,8 @@ export default {
 .page-numbers__btn:hover {
   background-color: rgba(255, 54, 0, 0.8);
   color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
