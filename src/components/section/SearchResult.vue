@@ -46,6 +46,10 @@
           </ul>
         </li>
       </ul>
+
+      <div v-if="count === 0" class="search-result__not-found">
+        "По вашему запросу ничего не найдено"
+      </div>
     </div>
 
     <div v-if="countPages > 1" class="search-pagination">
@@ -358,6 +362,11 @@ export default {
 .page-numbers__btn_selected {
   background-color: rgba(255, 54, 0, 0.8);
   color: #fff;
+}
+
+.search-result__not-found {
+  margin-bottom: 8.3333rem;
+  font-size: 1.2222rem;
 }
 
 @media (max-width: 1199px) {

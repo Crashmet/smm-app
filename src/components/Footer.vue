@@ -48,9 +48,13 @@
           <div class="footer-contacts">
             <h4 class="footer-contacts__title">Связь с нами</h4>
 
-            <p class="footer-contacts__adress">
+            <a
+              target="_blank"
+              href="https://yandex.ru/maps/213/moscow/house/aviamotornaya_ulitsa_59/Z04YcQVhQUAPQFtvfXt1cH5lYw==/?ll=37.721857%2C55.741267&z=16"
+              class="footer-contacts__adress footer-contacts__link"
+            >
               Адрес: ул. Авиамоторная, д.59, помещение 21.2, Москва, Россия
-            </p>
+            </a>
 
             <a href="tel:+74956468335" class="footer-contacts__link"
               >Телефон:+7 495 646 83 35</a
@@ -194,21 +198,16 @@ export default {
 }
 
 .footer-contacts__title {
+  margin-bottom: 1rem;
   font-weight: 500;
   font-size: 1rem;
   color: #0d0d0d;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 1rem;
-}
-
-.footer-contacts__adress {
-  margin-bottom: 1.6rem;
-  font-size: 0.8889rem;
 }
 
 .footer-contacts__link {
   display: inline-block;
-  margin-bottom: 8px;
+  margin-bottom: 7.9992px;
   font-size: 0.8889rem;
   color: #0d0d0d;
   -webkit-transition: color 0.3s ease-in;
@@ -222,6 +221,11 @@ export default {
   -webkit-transition: color 0.2s ease-in;
   -o-transition: color 0.2s ease-in;
   transition: color 0.2s ease-in;
+}
+
+.footer-contacts__adress {
+  margin-bottom: 1.6rem;
+  font-size: 0.8889rem;
 }
 
 .footer-subscribe {

@@ -72,7 +72,7 @@ export default {
   color: #fff;
   font-size: 300%;
   padding: 0 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   font-weight: bolder;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -125,7 +125,7 @@ export default {
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 20px;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
