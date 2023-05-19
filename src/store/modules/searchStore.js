@@ -27,7 +27,27 @@ const searchStore = {
     },
 
     ADD_SEARCH_RESULT(state, results) {
-      state.searchResult = results;
+      const resultsData = results.map((el) => {
+        const dateUpd = new Date(Date.parse(el.updated));
+
+        let date = null;
+
+        if (dateUpd.getMonth() + 1 < 10) {
+          date = `${dateUpd.getDate()}.0${
+            dateUpd.getMonth() + 1
+          }.${dateUpd.getFullYear()}`;
+        } else {
+          date = `${dateUpd.getDate()}.${
+            dateUpd.getMonth() + 1
+          }.${dateUpd.getFullYear()}`;
+        }
+
+        el.updated = date;
+
+        return el;
+      });
+
+      state.searchResult = resultsData;
     },
   },
 

@@ -103,12 +103,12 @@ export default {
     handlerClickSearch() {
       if (this.searchInput.length > 0) {
         this.$router.push({ path: '/search-result' });
-
-        this.addSearchResult({
-          pageSize: this.pageSize,
-          searchInput: this.searchInput,
-        });
       }
+
+      this.addSearchResult({
+        pageSize: this.pageSize,
+        searchInput: this.searchInput,
+      });
 
       this.setSearchRequest(this.searchInput);
       this.clearSearchInput();

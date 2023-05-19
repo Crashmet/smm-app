@@ -2,24 +2,46 @@
   <section class="search-result">
     <div class="search-result__container container">
       <ul class="search-result__list-cards">
-        <li class="search-result__item-card item-card">
+        <li
+          class="search-result__item-card item-card"
+          v-for="item in searchResult"
+          :key="item.id"
+        >
           <div class="item-card__img"></div>
 
           <ul class="item-card__list-description">
             <li class="item-card__item-description item-description">
-              Аккаунт
+              {{ item.social }}: {{ item.nickname }}
             </li>
             <li class="item-card__item-description item-description">
-              Кол-во подписчиков:
+              Кол-во подписчиков: {{ item.subscribers }}
             </li>
-            <li class="item-card__item-description item-description">
-              Кол-во лайков:
+            <!-- <li class="item-card__item-description item-description">
+              Кол-во лайков: 
             </li>
             <li class="item-card__item-description item-description">
               Кол-во постов:
+            </li> -->
+            <li
+              class="item-card__item-description item-description"
+              v-if="item.price_for_post"
+            >
+              Цена за пост: {{ item.price_for_post }}
+            </li>
+            <li
+              class="item-card__item-description item-description"
+              v-if="item.price_for_stories"
+            >
+              Цена за сторис: {{ item.price_for_stories }}
+            </li>
+            <li
+              class="item-card__item-description item-description"
+              v-if="item.price_for_reels"
+            >
+              Цена за рилс: {{ item.price_for_reels }}
             </li>
             <li class="item-card__item-description item-description">
-              Дата создания:
+              Дата создания: {{ item.updated }}
             </li>
           </ul>
         </li>
@@ -100,12 +122,6 @@ export default {
       document.title,
       `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
     );
-
-    // const windowData = Object.fromEntries(
-    //   new URL(window.location).searchParams.entries()
-    // );
-
-    // const VALID_KEYS = ['page', 'page_size', 'search'];
   },
 
   unmounted() {
@@ -137,6 +153,10 @@ export default {
         document.title,
         `${window.location.pathname}#/search-result?page=${this.page}&page_size=${this.pageSize}&search=${this.searchRequest}`
       );
+    },
+
+    searchResult() {
+      console.log(this.searchResult);
     },
   },
 };
