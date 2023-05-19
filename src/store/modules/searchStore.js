@@ -6,6 +6,8 @@ const searchStore = {
   state: {
     searchRequest: '',
 
+    activePage: 1,
+
     count: null,
     searchResult: [],
   },
@@ -13,11 +15,17 @@ const searchStore = {
   getters: {
     searchRequest: ({ searchRequest }) => searchRequest,
 
+    activePage: ({ activePage }) => activePage,
+
     count: ({ count }) => count,
     searchResult: ({ searchResult }) => searchResult,
   },
 
   mutations: {
+    SET_ACTIVE_PAGE(state, value) {
+      state.activePage = value;
+    },
+
     SET_SEARCH_REQUEST(state, searchInput) {
       state.searchRequest = searchInput;
     },
@@ -52,6 +60,10 @@ const searchStore = {
   },
 
   actions: {
+    setActivePage({ commit }, value) {
+      commit('SET_ACTIVE_PAGE', value);
+    },
+
     setSearchRequest({ commit }, searchInput) {
       commit('SET_SEARCH_REQUEST', searchInput);
     },

@@ -94,28 +94,28 @@ export default {
   },
 
   computed: {
-    ...mapGetters('searchStore', ['searchRequest']),
+    ...mapGetters('searchStore', ['searchRequest', 'activePage']),
   },
 
   methods: {
-    ...mapActions('searchStore', ['setSearchRequest', 'addSearchResult']),
+    ...mapActions('searchStore', [
+      'setSearchRequest',
+      'addSearchResult',
+      'setActivePage',
+    ]),
 
     handlerClickSearch() {
       this.$router.push({ name: 'search-result' });
 
+      this.setActivePage(1);
+
       this.addSearchResult({
-        activePage: 1,
+        activePage: this.activePage,
         pageSize: this.pageSize,
         searchInput: this.searchInput,
       });
 
       this.setSearchRequest(this.searchInput);
-
-      // this.clearSearchInput();
-    },
-
-    clearSearchInput() {
-      this.searchInput = '';
     },
   },
 

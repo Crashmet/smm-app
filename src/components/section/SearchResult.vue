@@ -73,7 +73,7 @@
       <div class="search-page-numbers page-numbers">
         <button
           v-if="activePage > 3"
-          @click="handlerClickActivePage(1)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn"
         >
           1
@@ -85,14 +85,14 @@
 
         <button
           v-if="activePage > 1"
-          @click="handlerClickActivePage(activePage - 1)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn"
         >
           {{ activePage - 1 }}
         </button>
 
         <button
-          @click="handlerClickActivePage(activePage)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn page-numbers__btn_selected"
         >
           {{ activePage }}
@@ -100,7 +100,7 @@
 
         <button
           v-if="countPages > activePage + 1"
-          @click="handlerClickActivePage(activePage + 1)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn"
         >
           {{ activePage + 1 }}
@@ -108,7 +108,7 @@
 
         <button
           v-if="countPages > activePage + 2"
-          @click="handlerClickActivePage(activePage + 2)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn"
         >
           {{ activePage + 2 }}
@@ -122,7 +122,7 @@
 
         <button
           v-if="countPages !== activePage"
-          @click="handlerClickActivePage(countPages)"
+          @click="handlerClickActivePage"
           class="page-numbers__btn"
         >
           {{ countPages }}
@@ -161,8 +161,6 @@ export default {
 
   data() {
     return {
-      activePage: 1,
-
       pageSize: null,
     };
   },
@@ -184,7 +182,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters('searchStore', ['searchRequest', 'count', 'searchResult']),
+    ...mapGetters('searchStore', [
+      'searchRequest',
+      'count',
+      'searchResult',
+      'activePage',
+    ]),
 
     countPages() {
       return Math.ceil(this.count / this.pageSize);
@@ -192,7 +195,11 @@ export default {
   },
 
   methods: {
-    ...mapActions('searchStore', ['setSearchRequest', 'addSearchResult']),
+    ...mapActions('searchStore', [
+      'setSearchRequest',
+      'addSearchResult',
+      'setActivePage',
+    ]),
 
     historyPushState() {
       window.history.pushState(
@@ -203,16 +210,15 @@ export default {
     },
 
     handlerClickNextPage() {
-      this.activePage++;
+      this.setActivePage(this.activePage + 1);
     },
 
     handlerClickPrevPage() {
-      this.activePage--;
+      this.setActivePage(this.activePage - 1);
     },
 
-    handlerClickActivePage(value) {
-      // console.log(e.target.textContent);
-      this.activePage = value;
+    handlerClickActivePage(e) {
+      this.setActivePage(+e.target.textContent);
     },
   },
 
