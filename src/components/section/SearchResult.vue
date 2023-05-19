@@ -174,6 +174,19 @@ export default {
       this.pageSize = 12;
     }
 
+    const searchData = JSON.parse(localStorage.getItem('search-list'));
+
+    if (searchData) {
+      this.setActivePage(searchData.activePage);
+      this.setSearchRequest(searchData.searchRequest);
+    }
+
+    this.addSearchResult({
+      activePage: this.activePage,
+      pageSize: this.pageSize,
+      searchInput: this.searchRequest,
+    });
+
     this.historyPushState();
   },
 
@@ -199,6 +212,7 @@ export default {
       'setSearchRequest',
       'addSearchResult',
       'setActivePage',
+      'saveSearchRequestLocalStorage',
     ]),
 
     historyPushState() {
@@ -224,10 +238,20 @@ export default {
 
   watch: {
     searchRequest() {
+      this.saveSearchRequestLocalStorage({
+        activePage: this.activePage,
+        searchRequest: this.searchRequest,
+      });
+
       this.historyPushState();
     },
 
     activePage() {
+      this.saveSearchRequestLocalStorage({
+        activePage: this.activePage,
+        searchRequest: this.searchRequest,
+      });
+
       this.addSearchResult({
         activePage: this.activePage,
         pageSize: this.pageSize,

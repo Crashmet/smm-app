@@ -71,14 +71,21 @@ const searchStore = {
     addSearchResult({ commit }, { activePage, pageSize, searchInput }) {
       BloggerAPI.getSearchResult(activePage, pageSize, searchInput)
         .then(function (response) {
-          console.log(response.data);
-
           commit('SET_COUNT_CARDS', response.data.count);
           commit('ADD_SEARCH_RESULT', response.data.results);
         })
         .catch(function (error) {
           console.log(error);
         });
+    },
+
+    saveSearchRequestLocalStorage({ commit }, { activePage, searchRequest }) {
+      const searchData = {
+        activePage: activePage || 1,
+        searchRequest: searchRequest || '',
+      };
+
+      localStorage.setItem('search-list', JSON.stringify(searchData));
     },
   },
 };

@@ -102,20 +102,25 @@ export default {
       'setSearchRequest',
       'addSearchResult',
       'setActivePage',
+      'saveSearchRequestLocalStorage',
     ]),
 
     handlerClickSearch() {
       this.$router.push({ name: 'search-result' });
 
       this.setActivePage(1);
+      this.setSearchRequest(this.searchInput);
+
+      this.saveSearchRequestLocalStorage({
+        activePage: this.activePage,
+        searchRequest: this.searchInput,
+      });
 
       this.addSearchResult({
         activePage: this.activePage,
         pageSize: this.pageSize,
         searchInput: this.searchInput,
       });
-
-      this.setSearchRequest(this.searchInput);
     },
   },
 
