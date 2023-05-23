@@ -6,11 +6,15 @@
           <li
             v-for="item in filtersTitles"
             :key="item.title"
-            :class="item.isSortUp ? 'search-nav__item_active' : ''"
+            :class="[item.isSortUp ? 'search-nav__item_arrow_up' : '']"
             @click="handlerClickFiltersTitles(item)"
-            class="search-nav__item"
+            class="search-nav__item search-nav__item_arrow"
           >
-            <span class="search-nav__text">{{ item.title }}</span>
+            <span
+              :class="[item.isActive ? 'search-nav__item_active' : '']"
+              class="search-nav__text"
+              >{{ item.title }}</span
+            >
           </li>
         </ul>
       </nav>
@@ -231,10 +235,11 @@ export default {
     ]),
 
     handlerClickFiltersTitles(item) {
-      let { title, isSortUp, APIRequestUp, APIRequestDown } = item;
+      let { title, isActive, isSortUp, APIRequestUp, APIRequestDown } = item;
 
       const filterTitle = {
         title,
+        isActive: true,
         isSortUp: !isSortUp,
         APIRequestUp,
         APIRequestDown,
@@ -360,7 +365,11 @@ export default {
   margin-right: 10px;
 }
 
-.search-nav__item::after {
+.search-nav__item_active {
+  color: rgba(255, 54, 0, 0.8);
+}
+
+.search-nav__item_arrow::after {
   content: '';
   position: absolute;
   top: 0.6111rem;
@@ -373,7 +382,7 @@ export default {
   background-size: contain;
 }
 
-.search-nav__item_active::after {
+.search-nav__item_arrow_up::after {
   top: 0.5556rem;
   -webkit-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);

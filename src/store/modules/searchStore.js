@@ -16,30 +16,35 @@ const searchStore = {
       {
         title: 'Кол-во подписок',
         isSortUp: false,
+        isActive: false,
         APIRequestUp: 'subscribers',
         APIRequestDown: '-subscribers',
       },
       {
         title: 'Цена за пост',
         isSortUp: false,
+        isActive: false,
         APIRequestUp: 'price_for_post',
         APIRequestDown: '-price_for_post',
       },
       {
         title: 'Цена за сторис',
         isSortUp: false,
+        isActive: false,
         APIRequestUp: 'price_for_stories',
         APIRequestDown: '-price_for_stories',
       },
       {
         title: 'Цена за рилс',
         isSortUp: false,
+        isActive: false,
         APIRequestUp: 'price_for_reels',
         APIRequestDown: '-price_for_reels',
       },
       {
         title: 'Дата создания',
         isSortUp: false,
+        isActive: false,
         APIRequestUp: 'created',
         APIRequestDown: '-created',
       },
@@ -65,6 +70,7 @@ const searchStore = {
           el = filterTitle;
         } else {
           el.isSortUp = false;
+          el.isActive = false;
         }
 
         return el;
@@ -134,8 +140,6 @@ const searchStore = {
       { commit },
       { ordering, activePage, pageSize, searchInput }
     ) {
-      console.log(ordering, activePage, pageSize, searchInput);
-
       SearchResultAPI.getSearchResultOrFiltered(
         ordering,
         activePage,
@@ -145,7 +149,6 @@ const searchStore = {
         .then(function (response) {
           commit('SET_COUNT_CARDS', response.data.count);
           commit('ADD_SEARCH_RESULT', response.data.results);
-          console.log(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -168,14 +171,3 @@ const searchStore = {
 };
 
 export default searchStore;
-
-// addSearchResult({ commit }, { activePage, pageSize, searchInput }) {
-//   SearchResultAPI.getSearchResult(activePage, pageSize, searchInput)
-//     .then(function (response) {
-//       commit('SET_COUNT_CARDS', response.data.count);
-//       commit('ADD_SEARCH_RESULT', response.data.results);
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// },
