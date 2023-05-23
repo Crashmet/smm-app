@@ -79,7 +79,9 @@
                 placeholder="mail@example.com"
                 class="footer-subscribe__input"
               />
-              <button class="footer-subscribe__btn">Ок</button>
+              <button class="footer-subscribe__btn">
+                <span class="footer-subscribe__btn-arrow"></span>
+              </button>
             </form>
           </div>
         </li>
@@ -104,14 +106,17 @@ export default {
 
 .footer {
   margin-top: 2.7778rem;
-  margin-bottom: 2.7778rem;
 }
 
 .footer__container {
-  padding: 0 4.4444rem;
+  padding: 0 2.5556rem;
 }
 
 .footer__list {
+  background-color: #4c4c4c4b;
+  padding: 2.2222rem 2.1111rem;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,9 +167,9 @@ export default {
 .footer-info__logo:hover > .footer-info-logo__title_right,
 .footer-info__logo:active > .footer-info-logo__title_right {
   text-shadow: 4px 1px 6px #d3792b;
-  -webkit-transition: text-shadow 0.3s ease-in;
-  -o-transition: text-shadow 0.3s ease-in;
-  transition: text-shadow 0.3s ease-in;
+  -webkit-transition: text-shadow 0.2s ease-in;
+  -o-transition: text-shadow 0.2s ease-in;
+  transition: text-shadow 0.2s ease-in;
 }
 
 .footer-info-logo__desc {
@@ -192,7 +197,7 @@ export default {
 }
 
 .footer-contacts {
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   max-width: 20rem;
   margin-right: 2.7778rem;
 }
@@ -207,7 +212,7 @@ export default {
 
 .footer-contacts__link {
   display: inline-block;
-  margin-bottom: 7.9992px;
+  margin-bottom: 9px;
   font-size: 0.8889rem;
   color: #0d0d0d;
   -webkit-transition: color 0.3s ease-in;
@@ -224,12 +229,12 @@ export default {
 }
 
 .footer-contacts__adress {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4445rem;
   font-size: 0.8889rem;
 }
 
 .footer-subscribe {
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   max-width: 20rem;
 }
 .footer-subscribe__title {
@@ -291,6 +296,15 @@ export default {
 .footer-subscribe__btn:hover,
 .footer-subscribe__btn:active {
   background: rgba(255, 54, 0, 0.91);
+}
+
+.footer-subscribe__btn-arrow {
+  display: inline-block;
+  width: 0.6667rem;
+  height: 0.6667rem;
+  border-top: 0.2222rem solid #ffffff;
+  border-right: 0.2222rem solid #ffffff;
+  transform: rotate(45deg);
 }
 
 @media (max-width: 1000px) {

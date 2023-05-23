@@ -1,6 +1,47 @@
 <template>
   <section class="search-result">
     <div class="search-result__container container">
+      <nav v-if="count > 0" class="search__nav">
+        <ul class="search-nav__list">
+          <li
+            :class="isCategoryActive ? 'search-nav__item_active' : ''"
+            @click="isCategoryActive = !isCategoryActive"
+            class="search-nav__item search-nav__item_1"
+          >
+            <span class="search-nav__text">Категории</span>
+          </li>
+          <li
+            :class="isBrandActive ? 'search-nav__item_active' : ''"
+            @click="isBrandActive = !isBrandActive"
+            class="search-nav__item search-nav__item_2"
+          >
+            <span class="search-nav__text">Бренды</span>
+          </li>
+
+          <li
+            :class="isAgeActive ? 'search-nav__item_active' : ''"
+            @click="isAgeActive = !isAgeActive"
+            class="search-nav__item search-nav__item_3"
+          >
+            <span class="search-nav__text">Возраст</span>
+          </li>
+          <li
+            :class="isGenderActive ? 'search-nav__item_active' : ''"
+            @click="isGenderActive = !isGenderActive"
+            class="search-nav__item search-nav__item_4"
+          >
+            <span class="search-nav__text">Пол</span>
+          </li>
+          <li
+            :class="isRegionActive ? 'search-nav__item_active' : ''"
+            @click="isRegionActive = !isRegionActive"
+            class="search-nav__item search-nav__item_5"
+          >
+            <span class="search-nav__text">Регион</span>
+          </li>
+        </ul>
+      </nav>
+
       <ul class="search-result__list-cards">
         <li
           class="search-result__item-card item-card"
@@ -16,12 +57,6 @@
             <li class="item-card__item-description item-description">
               Кол-во подписчиков: {{ item.subscribers }}
             </li>
-            <!-- <li class="item-card__item-description item-description">
-              Кол-во лайков: 
-            </li>
-            <li class="item-card__item-description item-description">
-              Кол-во постов:
-            </li> -->
             <li
               class="item-card__item-description item-description"
               v-if="item.price_for_post"
@@ -166,6 +201,12 @@ export default {
   data() {
     return {
       pageSize: null,
+
+      isCategoryActive: false,
+      isBrandActive: false,
+      isAgeActive: false,
+      isGenderActive: false,
+      isRegionActive: false,
     };
   },
 
@@ -285,6 +326,99 @@ export default {
   padding: 0 4.4444rem;
 }
 
+.search__nav {
+  margin-bottom: 2.2222rem;
+}
+
+.search-nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.search-nav__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  margin-bottom: 24px;
+  height: 2.2222rem;
+  background: #fefefe;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search-nav__item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.search-nav__item::after {
+  content: '';
+  position: absolute;
+  top: 0.6111rem;
+  right: 0.6111rem;
+  width: 1.0556rem;
+  height: 1.0556rem;
+  background-image: url('../../assets/image/arrow.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.search-nav__item_active::after {
+  top: 0.5556rem;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -webkit-transition: -webkit-transform 0.3s easy;
+  transition: -webkit-transform 0.3s easy;
+  -o-transition: transform 0.3s easy;
+  transition: transform 0.3s easy;
+  transition: transform 0.3s easy, -webkit-transform 0.3s easy;
+}
+
+.search-nav__item_1 {
+  max-width: 176px;
+  min-width: 135px;
+}
+
+.search-nav__item_2 {
+  max-width: 289px;
+  min-width: 135px;
+}
+.search-nav__item_3 {
+  max-width: 138px;
+  min-width: 99px;
+}
+.search-nav__item_4 {
+  max-width: 211px;
+  min-width: 65px;
+}
+.search-nav__item_5 {
+  max-width: 186px;
+  min-width: 99px;
+}
+
+.search-nav__text {
+  padding: 0.5556rem 2.2222rem 0.5556rem 1.6111rem;
+}
+
 .search-result__list-cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -308,6 +442,10 @@ export default {
   width: 11.1111rem;
   height: 11.1111rem;
   background: #d9d9d9;
+}
+
+.item-description {
+  font-size: 0.8889rem;
 }
 
 .item-card__item-description:not(:last-child) {
@@ -400,6 +538,22 @@ export default {
 
   .search-result__container {
     padding: 0 40px;
+  }
+
+  .search-nav__item {
+    margin-bottom: 16px;
+  }
+
+  .search-nav__text {
+    padding-left: 14px;
+  }
+
+  .search-nav__list {
+    margin-left: 10px;
+  }
+
+  .search-nav__item {
+    margin-right: 15px;
   }
 
   .search-result__item-card:nth-child(even) {
