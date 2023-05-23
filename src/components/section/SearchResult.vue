@@ -4,40 +4,13 @@
       <nav v-if="count > 0" class="search__nav">
         <ul class="search-nav__list">
           <li
-            :class="isCategoryActive ? 'search-nav__item_active' : ''"
-            @click="isCategoryActive = !isCategoryActive"
-            class="search-nav__item search-nav__item_1"
+            v-for="item in filtersTitles"
+            :key="item.title"
+            :class="item.isSortUp ? 'search-nav__item_active' : ''"
+            @click="handlerClickFiltersTitles(item)"
+            class="search-nav__item"
           >
-            <span class="search-nav__text">Категории</span>
-          </li>
-          <li
-            :class="isBrandActive ? 'search-nav__item_active' : ''"
-            @click="isBrandActive = !isBrandActive"
-            class="search-nav__item search-nav__item_2"
-          >
-            <span class="search-nav__text">Бренды</span>
-          </li>
-
-          <li
-            :class="isAgeActive ? 'search-nav__item_active' : ''"
-            @click="isAgeActive = !isAgeActive"
-            class="search-nav__item search-nav__item_3"
-          >
-            <span class="search-nav__text">Возраст</span>
-          </li>
-          <li
-            :class="isGenderActive ? 'search-nav__item_active' : ''"
-            @click="isGenderActive = !isGenderActive"
-            class="search-nav__item search-nav__item_4"
-          >
-            <span class="search-nav__text">Пол</span>
-          </li>
-          <li
-            :class="isRegionActive ? 'search-nav__item_active' : ''"
-            @click="isRegionActive = !isRegionActive"
-            class="search-nav__item search-nav__item_5"
-          >
-            <span class="search-nav__text">Регион</span>
+            <span class="search-nav__text">{{ item.title }}</span>
           </li>
         </ul>
       </nav>
@@ -57,26 +30,20 @@
             <li class="item-card__item-description item-description">
               Кол-во подписчиков: {{ item.subscribers }}
             </li>
-            <li
-              class="item-card__item-description item-description"
-              v-if="item.price_for_post"
-            >
-              Цена за пост: {{ item.price_for_post }}
-            </li>
-            <li
-              class="item-card__item-description item-description"
-              v-if="item.price_for_stories"
-            >
-              Цена за сторис: {{ item.price_for_stories }}
-            </li>
-            <li
-              class="item-card__item-description item-description"
-              v-if="item.price_for_reels"
-            >
-              Цена за рилс: {{ item.price_for_reels }}
+            <li class="item-card__item-description item-description">
+              Цена за пост:
+              {{ item.price_for_post ? item.price_for_post : 0 }} руб.
             </li>
             <li class="item-card__item-description item-description">
-              Дата создания: {{ item.updated }}
+              Цена за сторис:
+              {{ item.price_for_stories ? item.price_for_stories : 0 }} руб.
+            </li>
+            <li class="item-card__item-description item-description">
+              Цена за рилс:
+              {{ item.price_for_reels ? item.price_for_reels : 0 }} руб.
+            </li>
+            <li class="item-card__item-description item-description">
+              Дата создания: {{ item.created }}
             </li>
           </ul>
         </li>
@@ -245,6 +212,7 @@ export default {
       'count',
       'searchResult',
       'activePage',
+      'filtersTitles',
     ]),
 
     countPages() {
@@ -256,9 +224,33 @@ export default {
     ...mapActions('searchStore', [
       'setSearchRequest',
       'addSearchResult',
+      'addSearchResultOrFiltered',
       'setActivePage',
       'saveSearchRequestLocalStorage',
+      'refreshFiltersTitles',
     ]),
+
+    handlerClickFiltersTitles(item) {
+      let { title, isSortUp, APIRequestUp, APIRequestDown } = item;
+
+      const filterTitle = {
+        title,
+        isSortUp: !isSortUp,
+        APIRequestUp,
+        APIRequestDown,
+      };
+
+      this.refreshFiltersTitles(filterTitle);
+
+      const ordering = isSortUp ? APIRequestUp : APIRequestDown;
+
+      this.addSearchResultOrFiltered({
+        ordering,
+        activePage: this.activePage,
+        pageSize: this.pageSize,
+        searchInput: this.searchRequest,
+      });
+    },
 
     historyPushState() {
       window.history.pushState(
@@ -393,26 +385,12 @@ export default {
   transition: transform 0.3s easy, -webkit-transform 0.3s easy;
 }
 
-.search-nav__item_1 {
-  max-width: 176px;
-  min-width: 135px;
+.search-nav__item:nth-child(4) {
+  max-width: 12rem;
 }
 
-.search-nav__item_2 {
-  max-width: 289px;
-  min-width: 135px;
-}
-.search-nav__item_3 {
-  max-width: 138px;
-  min-width: 99px;
-}
-.search-nav__item_4 {
-  max-width: 211px;
-  min-width: 65px;
-}
-.search-nav__item_5 {
-  max-width: 186px;
-  min-width: 99px;
+.search-nav__item:nth-child(5) {
+  max-width: 12rem;
 }
 
 .search-nav__text {
