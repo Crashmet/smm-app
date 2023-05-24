@@ -173,11 +173,7 @@ export default {
     return {
       pageSize: null,
 
-      isCategoryActive: false,
-      isBrandActive: false,
-      isAgeActive: false,
-      isGenderActive: false,
-      isRegionActive: false,
+      ordering: '',
     };
   },
 
@@ -198,6 +194,7 @@ export default {
     }
 
     this.addSearchResult({
+      ordering: this.ordering,
       activePage: this.activePage,
       pageSize: this.pageSize,
       searchInput: this.searchRequest,
@@ -228,7 +225,6 @@ export default {
     ...mapActions('searchStore', [
       'setSearchRequest',
       'addSearchResult',
-      'addSearchResultOrFiltered',
       'setActivePage',
       'saveSearchRequestLocalStorage',
       'refreshFiltersTitles',
@@ -247,10 +243,10 @@ export default {
 
       this.refreshFiltersTitles(filterTitle);
 
-      const ordering = isSortUp ? APIRequestUp : APIRequestDown;
+      this.ordering = isSortUp ? APIRequestUp : APIRequestDown;
 
-      this.addSearchResultOrFiltered({
-        ordering,
+      this.addSearchResult({
+        ordering: this.ordering,
         activePage: this.activePage,
         pageSize: this.pageSize,
         searchInput: this.searchRequest,
@@ -295,6 +291,7 @@ export default {
       });
 
       this.addSearchResult({
+        ordering: this.ordering,
         activePage: this.activePage,
         pageSize: this.pageSize,
         searchInput: this.searchRequest,

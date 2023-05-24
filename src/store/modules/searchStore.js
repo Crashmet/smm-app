@@ -125,22 +125,11 @@ const searchStore = {
       commit('SET_SEARCH_REQUEST', searchInput);
     },
 
-    addSearchResult({ commit }, { activePage, pageSize, searchInput }) {
-      SearchResultAPI.getSearchResult(activePage, pageSize, searchInput)
-        .then(function (response) {
-          commit('SET_COUNT_CARDS', response.data.count);
-          commit('ADD_SEARCH_RESULT', response.data.results);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-
-    addSearchResultOrFiltered(
+    addSearchResult(
       { commit },
       { ordering, activePage, pageSize, searchInput }
     ) {
-      SearchResultAPI.getSearchResultOrFiltered(
+      SearchResultAPI.getSearchResult(
         ordering,
         activePage,
         pageSize,

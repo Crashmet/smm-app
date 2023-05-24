@@ -68,6 +68,7 @@ export default {
       });
 
       this.addSearchResult({
+        ordering: '',
         activePage: this.activePage,
         pageSize: this.pageSize,
         searchInput: this.searchInput,
