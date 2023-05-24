@@ -54,6 +54,7 @@ export default {
       'addSearchResult',
       'setActivePage',
       'saveSearchRequestLocalStorage',
+      'resetFiltersTitles',
     ]),
 
     handlerClickSearch() {
@@ -73,6 +74,8 @@ export default {
         pageSize: this.pageSize,
         searchInput: this.searchInput,
       });
+
+      this.resetFiltersTitles();
     },
   },
 

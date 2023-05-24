@@ -79,6 +79,17 @@ const searchStore = {
       state.filtersTitles = newfiltersTitles;
     },
 
+    RESET_FILTER_TITLE(state) {
+      const newfiltersTitles = state.filtersTitles.map((el) => {
+        el.isSortUp = false;
+        el.isActive = false;
+
+        return el;
+      });
+
+      state.filtersTitles = newfiltersTitles;
+    },
+
     SET_ACTIVE_PAGE(state, value) {
       state.activePage = value;
     },
@@ -155,6 +166,10 @@ const searchStore = {
 
     refreshFiltersTitles({ commit }, filterTitle) {
       commit('REFRESH_FILTER_TITLE', filterTitle);
+    },
+
+    resetFiltersTitles({ commit }) {
+      commit('RESET_FILTER_TITLE');
     },
   },
 };
